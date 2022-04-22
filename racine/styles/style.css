@@ -1,0 +1,354 @@
+/*
+  Red Orange #FF4500
+  Orange #FF8300
+  Chili Pepper #DF362D
+  Chartreuse #B7AC44
+*/
+
+/*************ALL***************/
+* {
+  font-family: "Noto Sans", sans-serif;
+}
+
+* > a {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 300vh;
+}
+
+strong {
+  font-weight: normal;
+}
+
+/*************HEADER***************/
+
+.header {
+  background: #000000;
+  background-image: url("../img/backgroundmath.jpg");
+  background-size: 30%;
+  color: #ffffff;
+  text-shadow: #000000 2px 2px;
+  box-shadow: 0px 0.5px 5px #000000;
+  position: inherit;
+  width: 100%;
+  height: 75px;
+  margin-bottom: 5px;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: -1px;
+  z-index: 9999;
+  transition-duration: 0.6s;
+}
+
+/* .header:hover {
+  background-color: #ffffff;
+  background-image: none;
+  color: #000000;
+  text-shadow: #ffffff 1px 2px;
+  box-shadow: none;
+} */
+
+#cursor {
+  display: flex;
+  margin-left: 0rem;
+  position: inherit;
+}
+
+/* #cursor::after {
+  content: "";
+  position: relative;
+  height: 2rem;
+  width: 3px;
+  background: #000000;
+  bottom: 0px;
+  top: 2px;
+  right: 0px;
+  left: 0px;
+  animation: anim 1s linear infinite;
+}
+@keyframes anim {
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+} */
+
+#navbar {
+  background: #000000;
+  color: #ffffff;
+  z-index: 9999;
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  top: -70px;
+  transition: 0.5s;
+
+  font-family: "Raleway", sans-serif;
+  letter-spacing: -1px;
+}
+
+ul {
+  list-style-type: none;
+  padding-top: 15px;
+  margin-top: 0px;
+  margin-left: 8rem;
+  margin-right: 8rem;
+  font-size: 2rem;
+
+  display: flex;
+  justify-content: space-arround;
+  padding: 0;
+}
+
+.shareName {
+  margin: 0;
+  padding: 0;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+li {
+  width: auto;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titlewebsite {
+  flex: 2 1 auto;
+  justify-content: left;
+  font-size: larger;
+  color: #ff8300;
+  text-shadow: #DF362D 1px 1px 3px;
+}
+
+#shareName {
+  margin: 0;
+  padding: 0;
+}
+
+.titlewebsite2 {
+  flex: 2 1 auto;
+  justify-content: left;
+}
+
+.titlewebsite2 > a {
+  text-decoration: none;
+  color: #ff8300;
+}
+
+.share {
+  width: auto;
+  margin-left: 50px;
+}
+
+#shareMnemo {
+  margin-left: -50px;
+  margin-top: 6px;
+}
+
+.share > span {
+  font-family: "Inter", sans-serif;
+}
+
+.HeaderPriceUp {
+  background-color: #78b74477;
+}
+
+.HeaderPriceDown {
+  background-color: #df362d76;
+}
+
+#shareDate {
+  font-size: 12px;
+}
+
+#aMenu {
+  color: #ffffff;
+}
+
+/*************BODY***************/
+
+.body {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.mmititle {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 50px;
+}
+
+.mmisubtitle {
+  margin-top: -30px;
+  text-align: center;
+  font-size: 10px;
+}
+ /*------------GRAPH---------------*/
+
+.mmiPriceDisplay {
+  margin-top: 10px;
+  display: flex;
+  width: auto;
+  padding-right: 50px;
+  justify-content: right;
+}
+
+.eodDate {
+  text-align: right;
+  margin-top: -15px;
+  width: 95%;
+}
+
+.mmiPrice {
+  margin: 0;
+  margin-left: -40px;
+  margin-bottom: 10px;
+  font-size: 45px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0px;
+  color: #000000;
+}
+
+.Arrow {
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
+  margin-right: 40px;
+}
+
+.PriceUp {
+  color: #78b744;
+}
+
+.PriceDown {
+  color: #DF362D;
+}
+
+.currencyMMI {
+  margin-left: 2px;
+  margin-top: 23px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 2px;
+  color: #000000;
+}
+
+#copyright {
+  font-size: 20px;
+}
+
+.mmi {
+  margin: 0;
+  padding: 0;
+}
+
+#letterMMI {
+  color: #ff8300;
+}
+
+.mmitext {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+}
+
+.mmigraph {
+  width: 100;
+}
+
+#legalmentions {
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+  font-size: small;
+}
+
+/*************RESPONSIVE***************/
+
+@media screen and (max-width: 896px) {
+  .header {
+    height: 80px;
+    background-size: 70%;
+  }
+
+  ul {
+    flex-direction: column;
+    margin-bottom: -80px;
+    height: 70px;
+  }
+
+  .body {
+    margin-top: -80px;
+  }
+
+  .titlewebsite {
+    flex: none;
+    justify-content: center;
+  }
+
+  .share {
+    margin: 0;
+    margin-top: -20px;
+    padding: 0;
+    font-size: 20px;
+  }
+
+  #shareMnemo {
+    margin-left: 0;
+    text-align: center;
+    background-color: #df362d;
+
+    visibility: hidden;
+  }
+
+  #shareDate {
+    margin-top: -30px;
+    font-size: 10px;
+
+    visibility: hidden;
+  }
+
+  #menu {
+    margin-top: -50px;
+    visibility: hidden;
+  }
+
+  .mmititle {
+    padding-top: 30px;
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+
+  .mmiPriceDisplay {
+    justify-content: center;
+    margin-left: 60px;
+  }
+
+  .mmiPrice {
+    font-size: 30px;
+  }
+  .currencyMMI {
+    font-size: 10px;
+  }
+  .Arrow {
+    width: 20px;
+    height: 20px;
+  }
+}
