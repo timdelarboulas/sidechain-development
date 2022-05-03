@@ -23,7 +23,7 @@ const openCSVPrice = async () => {
     const csvArrayPrice = csvFormPrice.split(",");
 
     mmiDisplay.textContent = csvArrayPrice[0];
-    shareHeader.textContent = csvArrayPrice[0] + " $";
+    shareHeader.textContent = "MMI : " + csvArrayPrice[0] + " $";
 
     if (parseInt(csvArrayPrice[0]) > parseInt(csvArrayPrice[1])) {
       mmiDisplay.classList.add("PriceUp");
