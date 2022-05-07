@@ -1,0 +1,17 @@
+https://stackoverflow.com/questions/47455680/running-a-python-script-on-google-cloud-compute-engine
+
+Make your script an executable
+
+chmod +x myscript.py
+Run the nohup command to execute the script in the background. The & option ensures that the process stays alive after exiting. I've added the shebang line to my python script so there's no need to call python here
+
+nohup /path/to/script/myscript.py &
+Logout from the shell if you want
+
+logout
+Done! Now your script is up and running. You can login back and make sure that your process is still alive by checking the output of this command:
+
+ps -e | grep myscript.py
+If anything went wrong, you can check out the nohup.out file to see the output of your script:
+
+cat nohup.out

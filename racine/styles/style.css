@@ -189,6 +189,25 @@ li {
   text-align: center;
 }
 
+
+.subSlogan {
+  text-align: center;
+  margin-top: -15px;
+}
+
+#quote {
+  margin-top: 10px;
+  margin-bottom: -30px;
+
+  font-size: large;
+  font-style: italic;
+  color: #000000b5;
+}
+
+q {
+  quotes: "« " " »";
+}
+
 .mmititle {
   text-align: center;
   margin-top: 60px;
@@ -228,7 +247,27 @@ li {
   text-shadow: 0px 0.5px 5px #000000;
 }
 
+.spotifyFooterText {
+  font-weight: 600;
+}
 
+#close {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: 7px;
+  color: #ffffff;
+  background-color: #000000;
+
+  height: 20px;
+  width: 27px;
+  border-radius: 50%;
+  border: 2px solid #000;
+
+  position: relative;
+  top: -14px;
+  left: 480px;
+}
 
 /*------------GRAPH---------------*/
 
@@ -295,11 +334,16 @@ li {
   color: #ff8300;
 }
 
-.mmitext {
+.mmiText {
   width: 100%;
   margin: 0;
   padding: 0;
   text-align: justify;
+}
+
+.mmiTextEmphasize{
+  color: #FF8300;
+  font-weight: 600;
 }
 
 .mmigraph {
