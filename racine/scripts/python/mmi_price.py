@@ -35,7 +35,7 @@ limit = str(1)
 
 def mmi_job():
 
-    # récupère la dernière date "eod" de cotation (utiliser dans l'export JSON)
+    # récupère la dernière date "eod" de cotation (utiliser dans l'export csv)
     r = requests.get(url + access_key + url_symbol +
                      "SPOT" + url_limit + limit)
     if r.ok:

@@ -4,14 +4,12 @@ Tâches restantes à effectuer.
 
 DEVELOPPMENT
 
-- Analyser le CSV avec JS
-- Afficher le graphique du MMI avec graphJS
+- étudier l'API d'OpenSea
 
 DISPLAY
 
-- deuxième header pour plus de visibilité
+- faire le deuxième header
 
 BACK
 
-- Paramétrer une VM pour automatiser le lancement du script mmi_price.py
-- Héberger le site
+- paramétrer une crontab dans une instance de VM pour jouer le script automatiquement

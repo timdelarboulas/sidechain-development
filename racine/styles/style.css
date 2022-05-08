@@ -40,7 +40,7 @@ strong {
   font-family: "Raleway", sans-serif;
   letter-spacing: -1px;
   z-index: 9999;
-  transition-duration: 0.6s;
+  /* transition-duration: 0.6s; */
 }
 
 /* .header:hover {
@@ -234,6 +234,7 @@ q {
   box-shadow: 0px 0.5px 5px #000000;
 
   display: flex;
+  transition: 0.5s;
 }
 
 .spotifyFooterLeft {
@@ -267,6 +268,18 @@ q {
   position: relative;
   top: -14px;
   left: 480px;
+}
+
+.closeCross {
+  position: relative;
+  margin-top: 3px;
+  width: 20px;
+}
+
+.closeArray {
+  position: relative;
+  margin-bottom: 4px;
+  width: 15px;
 }
 
 /*------------GRAPH---------------*/
