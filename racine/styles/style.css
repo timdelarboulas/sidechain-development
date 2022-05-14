@@ -17,7 +17,7 @@
 body {
   margin: 0;
   padding: 0;
-  min-height: 300vh;
+  min-height: 400vh;
 }
 
 strong {
@@ -220,6 +220,15 @@ q {
   font-size: 10px;
 }
 
+
+/*------------PRIMARY VALUES GRID---------------*/
+
+.primaryValuesInfo{
+  display: grid;
+  grid-template-columns: repeat(7, 12.5%);
+  grid-template-rows: repeat(10, 60px);
+  border: 1px solid #000000;
+}
 
 /*------------SPOTIFY FOOTER---------------*/
 

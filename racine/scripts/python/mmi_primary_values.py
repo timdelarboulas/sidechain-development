@@ -53,16 +53,16 @@ for i in primary_values_list:
 
 mmi_primary_values_path = "C:\\Users\\delar\\Desktop\\sidechain\\development\\back\\mmi\\mmi_primary_values.csv"
 
-data = {"Shares": ["Universal Music Group B.V", "Spotify", "Tencent Music Entertainment Group", "Warner Music Group Corp.", "Sirius XM Holdings", "Sonos, Inc.", "Live Nation Entertainment", "iHeartMedia Inc", "Music Broadcast Ltd", "Believe Digital"],
+data = {"Share": ["Universal Music Group B.V", "Spotify", "Tencent Music Entertainment Group", "Warner Music Group Corp.", "Sirius XM Holdings", "Sonos Inc.", "Live Nation Entertainment", "iHeartMedia Inc", "Music Broadcast Ltd", "Believe Digital"],
         "MNEMO": symbol_pl,
         "Price": close_pl,
         "Volume": volume_pl,
         "Currency": ["EUR", "USD", "USD", "USD", "USD", "USD", "USD", "USD", "INR", "EUR"],
-        "Stock Exchange": exchange_pl,
+        "Exchange": exchange_pl,
         "Date": last_day_pl}
 
 df = pd.DataFrame(
-    data, columns=['Shares', 'MNEMO', "Price", "Currency", "Volume", "Stock Exchange", "Date"])
+    data, columns=["Share", "MNEMO", "Price", "Currency", "Volume", "Exchange", "Date"])
 
 # Export to a CSV file
 df.to_csv(r'C:\Users\delar\Desktop\sidechain\development\racine\ressources\csv\mmi_primary_values.csv',
