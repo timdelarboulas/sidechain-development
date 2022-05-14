@@ -4,11 +4,12 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-import csv
+import re
+import pandas as pd
 
 # -----------------------------------------------------------------------
 
-# Paramètre de l'API
+# API settings
 url = "http://api.marketstack.com/v1/eod?access_key="
 access_key = "ead4e53f61b04a1c3696c50b0dbad8da"
 url_symbol = "&symbols="
@@ -21,6 +22,11 @@ limit = str(1)
 primary_values_list = ["UMG.XAMS", "SPOT", "TME", "WMG",
                        "SIRI", "SONO", "LYV", "IHRT", "RADIOCITY.XNSE", "BLV"]
 informations_primary_list = []
+close_pl = []
+volume_pl = []
+symbol_pl = []
+exchange_pl = []
+last_day_pl = []
 
 for i in primary_values_list:
     r = requests.get(url + access_key + url_symbol + i + url_limit + limit)
@@ -29,19 +35,37 @@ for i in primary_values_list:
         js = json.loads(soup.text)
         close = [d.get("close")
                  for d in js["data"] if d.get("close")]
-        informations_primary_list += close
+        close_pl += close
         volume = [d.get("volume")
                   for d in js["data"] if d.get("volume")]
-        informations_primary_list += volume
-        symbol = [d.get("symbole")
+        volume_pl += volume
+        symbol = [d.get("symbol")
                   for d in js["data"] if d.get("symbol")]
-        informations_primary_list += symbol
+        symbol_pl += symbol
         exchange = [d.get("exchange")
                     for d in js["data"] if d.get("exchange")]
-        informations_primary_list += exchange
+        exchange_pl += exchange
         day_date = [d.get("date")
                     for d in js["data"] if d.get("date")]
-        informations_primary_list += day_date
-        print(informations_primary_list)
+        last_day_pl += day_date
 
-# to contiue
+# export in a csv file
+
+mmi_primary_values_path = "C:\\Users\\delar\\Desktop\\sidechain\\development\\back\\mmi\\mmi_primary_values.csv"
+
+data = {"Shares": ["Universal Music Group B.V", "Spotify", "Tencent Music Entertainment Group", "Warner Music Group Corp.", "Sirius XM Holdings", "Sonos, Inc.", "Live Nation Entertainment", "iHeartMedia Inc", "Music Broadcast Ltd", "Believe Digital"],
+        "MNEMO": symbol_pl,
+        "Price": close_pl,
+        "Volume": volume_pl,
+        "Currency": ["EUR", "USD", "USD", "USD", "USD", "USD", "USD", "USD", "INR", "EUR"],
+        "Stock Exchange": exchange_pl,
+        "Date": last_day_pl}
+
+df = pd.DataFrame(
+    data, columns=['Shares', 'MNEMO', "Price", "Currency", "Volume", "Stock Exchange", "Date"])
+
+# Export to a CSV file
+df.to_csv(r'C:\Users\delar\Desktop\sidechain\development\racine\ressources\csv\mmi_primary_values.csv',
+          index=False, header=True)
+
+# SUCCESS
