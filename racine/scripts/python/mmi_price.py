@@ -1,11 +1,12 @@
-# Calcul du Music Market Index (MMI)
+# Calculation of the Music Market Index (MMI)
 
 # Import
 
-# calcul
+# calculation
 import requests
 from bs4 import BeautifulSoup
-from currencies_change_rate import change_rate
+from currencies_change_rate import eurusd_change_rate
+from currencies_change_rate import inrusd_change_rate
 import json
 import csv
 
@@ -18,7 +19,7 @@ import ssl
 
 # -----------------------------------------------------------------------
 
-# Paramètre de l'API
+# API settings
 url = "http://api.marketstack.com/v1/eod?access_key="
 access_key = "ead4e53f61b04a1c3696c50b0dbad8da"
 url_symbol = "&symbols="
@@ -28,7 +29,7 @@ limit = str(1)
 # -----------------------------------------------------------------------
 
 
-# récupère la dernière date "eod" de cotation (utiliser dans l'export csv)
+# retrieves the last "eod" date of quotation (used in the csv export)
 r = requests.get(url + access_key + url_symbol +
                  "SPOT" + url_limit + limit)
 if r.ok:
@@ -38,12 +39,12 @@ if r.ok:
                         for d in js['data'] if d.get("date")])
 # success
 
-# calcul de la sommes des valeurs primaires
+# the foreign exchange conversion into dollars and the calculation of the sum of the primary values
 primary_values_list = ["UMG.XAMS", "SPOT", "TME", "WMG",
                        "SIRI", "SONO", "LYV", "IHRT", "RADIOCITY.XNSE", "BLV"]
 
 primary_values_data_eod = []
-primary_sum_eod = 0  # total de toutes les valeurs eod primaires
+primary_sum_eod = 0  # total of all primary values
 
 for i in primary_values_list:
     r = requests.get(url + access_key + url_symbol + i + url_limit + limit)
@@ -51,17 +52,32 @@ for i in primary_values_list:
         soup = BeautifulSoup(r.text, "html.parser")
         js = json.loads(soup.text)
         if i == "UMG.XAMS":
-            changing_exchange_rate = str(float("".join(map(str, [d.get("close")
-                                                                 for d in js['data'] if d.get("close")]))) * change_rate)
-            close = [float(changing_exchange_rate)]
-            primary_values_data_eod += close
-            # permet de convertir la valeur de l'action UMG, cotée en euro (EUR), en dollar américain (USD) grâce à l'import du taux de change (change_rate) recupérer depuis le fichier py "currencies_change_rate"
+            eurusd_exchange_rate = str(float("".join(map(str, [d.get("close")
+                                                               for d in js['data'] if d.get("close")]))) * eurusd_change_rate)
+            umg_close = [float(eurusd_exchange_rate)]
+            primary_values_data_eod += umg_close
+            # convert the UMG share in euros into dollars and add it to the array of global values
+
+        elif i == "BLV":
+            eurusd2_exchange_rate = str(float("".join(map(str, [d.get("close")
+                                                                for d in js['data'] if d.get("close")]))) * eurusd_change_rate)
+            blv_close = [float(eurusd2_exchange_rate)]
+            primary_values_data_eod += blv_close
+            # convert the BLV share in euros into dollars and add it to the array of global values
+
+        elif i == "RADIOCITY.XNSE":
+            inrusd_exchange_rate = str(float("".join(map(str, [d.get("close")
+                                                               for d in js['data'] if d.get("close")]))) * inrusd_change_rate)
+
+            radiocity_close = [float(inrusd_exchange_rate)]
+            primary_values_data_eod += radiocity_close
+            # convert the Music Broadcast Ltd (RADIOCITY) share in Indian rupee into dollars and add it to the array of global values
+
         else:
             close = [d.get("close")
                      for d in js['data'] if d.get("close")]
-        primary_values_data_eod += close
-        primary_sum_eod = sum(primary_values_data_eod)
-    # failure => les valeurs primaires sont bien additionnées mais la valeur "UMG.XAMS" est ajouté deux fois !
+            primary_values_data_eod += close
+        # add the other values, already in dollars, to the array of global values
 
 # calcul de la sommes des valeurs secondaires
 secondary_values_list = ["GOOGL", "SNE", "AAPL", "YNDX", "AMZN", "NTES"]
@@ -87,8 +103,7 @@ for i, y in zip(secondary_values_data_eod, secondary_weighted):
 average_length = len(primary_values_list) + \
     len(secondary_values_list)  # nombre total de valeurs
 mmi_price_eod = round(
-    (float(primary_sum_eod - float(changing_exchange_rate)) + float(secondary_sum_eod)) / average_length, 2)
-# on soustrait la valeur "UMG.XAMS" de la somme des valeurs primaires afin de résoudre l'erreur constatée ligne 39
+    (float(primary_sum_eod) + float(secondary_sum_eod)) / average_length, 2)
 
 print(mmi_price_eod)
 # success

@@ -221,13 +221,28 @@ q {
 }
 
 
-/*------------PRIMARY VALUES GRID---------------*/
+/*------------PRIMARY VALUES---------------*/
 
 .primaryValuesInfo{
-  display: grid;
-  grid-template-columns: repeat(7, 12.5%);
-  grid-template-rows: repeat(10, 60px);
+  width: 100%;
+  margin-top: 20px;
+  padding: 0;
+
+  display: flexbox;
+
   border: 1px solid #000000;
+}
+
+th {
+  text-align: left;
+  font-size: large;
+  border-bottom: 1px solid #000000;
+}
+
+td {
+  text-align: left;
+  margin: 0;
+  padding: 0;
 }
 
 /*------------SPOTIFY FOOTER---------------*/
@@ -244,6 +259,8 @@ q {
 
   display: flex;
   transition: 0.5s;
+
+  z-index: 9999;
 }
 
 .spotifyFooterLeft {
@@ -352,6 +369,12 @@ q {
   padding: 0;
 }
 
+.chart {
+  margin-bottom: 15px;
+}
+
+/*--------------------------*/
+
 #letterMMI {
   color: #ff8300;
 }
@@ -368,8 +391,9 @@ q {
   font-weight: 600;
 }
 
-.mmigraph {
-  width: 100;
+.primaryValues {
+  margin-top: 65px;
+  font-size: 25px;
 }
 
 #legalmentions {
@@ -378,6 +402,15 @@ q {
   padding: 0;
   text-align: justify;
   font-size: small;
+}
+
+.mnftDiv{
+  margin-top: 200px;
+}
+
+#mnftTitle {
+  font-size: 50px;
+  text-align: center;
 }
 
 /*************RESPONSIVE***************/
@@ -463,10 +496,9 @@ q {
     height: 20px;
   }
 
-/*-----GRAPH-----*/
-#mmiChart {
-  height: 600px;
-}
-
+  /*-----GRAPH-----*/
+  #mmiChart {
+    height: 600px;
+  }
 
 }

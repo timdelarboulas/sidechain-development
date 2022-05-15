@@ -7,11 +7,11 @@ const primaryValuesInfo = document.querySelector(".primaryValuesInfo");
 const openCSVPrimaryValues = async () => {
   const pvDatas = await fetch(csvPrimaryValue);
   try {
-    const pvText = await pvDatas.text();
-
-    const lines = pvText.split("\n");
-
     let result = [];
+
+    // transform csv into JSON object
+    const pvText = await pvDatas.text();
+    const lines = pvText.split("\n");
     const headers = lines[0].split(",");
 
     for (i = 1; i < lines.length; i++) {
@@ -21,23 +21,25 @@ const openCSVPrimaryValues = async () => {
       for (var j = 0; j < headers.length; j++) {
         obj[headers[j]] = currentline[j];
       }
-      result.push(obj);
-    }
-    console.log(result[0]);
 
-    primaryValuesInfo.innerHTML = result
-      .map(
-        (info) => `
-    <h4 id="col1">${info.Share}</h4>
-    <h4 id="col2">${info.MNEMO}</h4>
-    <h4 id="col3">${info.Price}</h4>
-    <h4 id="col4">${info.Currency}</h4>
-    <h4 id="col5">${info.Volume}</h4>
-    <h4 id="col6">${info.Exchange}</h4>
-    <h4 id="col7">${info.Date}</h4>
+      result.push(obj);
+      // SUCCESS, JSON object done
+
+      delete result[10];
+      // deleted the last empty object
+    }
+
+    primaryValuesInfo.innerHTML =
+      `
+    <tr><th>Nom</th><th>Mnémo</th><th>Prix</th><th>Devise</th><th>Volume</th><th>Place</th></tr>
+    ` +
+      result
+        .map(
+          (info) => `
+    <tr><td>${info.Share}</td><td>${info.MNEMO}</td><td>${info.Price}</td><td>${info.Currency}</td><td>${info.Volume}</td><td>${info.Exchange}</td></tr>
     `
-      )
-      .join("");
+        )
+        .join("");
   } catch {
     console.error("error");
   }
