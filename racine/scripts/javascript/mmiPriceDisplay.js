@@ -5,12 +5,16 @@ const csvMMIPrice =
 const csvMMIDate =
   "http://127.0.0.1:5500/development/racine/ressources/csv/mmi_date.csv";
 
+const csvBTCprice =
+  "http://127.0.0.1:5500/development/racine/ressources/csv/mmi_btc_price.csv";
+
 const mmiDisplay = document.querySelector(".mmiPrice");
 const mmiDisplayDate = document.getElementById("mmiDate");
 const arrowDisplay = document.getElementById("arrow");
 const shareHeader = document.getElementById("shareMnemo");
 const shareDate = document.getElementById("shareDate");
 const shareExValue = "OTC";
+const btcPrice = document.getElementById("btcPrice");
 
 let mmiPriceArray = []; // sert à créer un array avec les cours du MMI, récupérer dans le CSV
 let mmiDateArray = []; // idem avec la date
@@ -34,7 +38,7 @@ const openCSVPrice = async () => {
       shareHeader.classList.add("HeaderPriceDown");
     }
 
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < 10; i++) {
       mmiPriceArray.push(csvArrayPrice[i]);
     } // ajoute les 5 derniers cours du MMI depuis le CSV
   } catch {
@@ -52,13 +56,23 @@ const openCSVDate = async () => {
 
   mmiDisplayDate.textContent = csvArrayDate[0] + " (#" + shareExValue + ")";
 
-  for (i = 0; i < 5; i++) {
+  for (i = 0; i < 10; i++) {
     mmiDateArray.push(csvArrayDate[i]);
   } // ajoute les 5 dernières dates EOD du MMI depuis le CSV
+};
+
+const openBTCPrice = async () => {
+  const csvResBTCPrice = await fetch(csvBTCprice);
+  try {
+    const csvTextBTCPrice = await csvResBTCPrice.text();
+    csvBTCpriceMath = parseFloat(csvTextBTCPrice).toFixed(6);
+    btcPrice.textContent = csvBTCpriceMath;
+  } catch {}
 };
 
 async function openFiles() {
   await openCSVPrice();
   await openCSVDate();
+  await openBTCPrice();
 }
 // SUCCESS

@@ -7,8 +7,10 @@ import requests
 from bs4 import BeautifulSoup
 from currencies_change_rate import eurusd_change_rate
 from currencies_change_rate import inrusd_change_rate
+from currencies_change_rate import btc_price
 import json
 import csv
+import pandas as pd
 
 # email
 from email.mime.multipart import MIMEMultipart
@@ -108,11 +110,17 @@ mmi_price_eod = round(
 print(mmi_price_eod)
 # success
 
+# change MMI USD price into BTC price
+mmi_btc_price_eod = mmi_price_eod / btc_price
+print(mmi_btc_price_eod)
+# success
+
 # -----------------------------------------------------------------------
 
 # Export MMI's datas to several CSV files, used in the build and the display of the MMI's graph and them save in back-up file
 mmi_data_csv = "C:\\Users\\delar\\Desktop\\sidechain\\development\\back\\mmi\\mmi_data.csv"
 mmi_price_csv = "C:\\Users\\delar\\Desktop\\sidechain\\development\\racine\\ressources\\csv\\mmi_price.csv"
+mmi_btc_price_csv = "C:\\Users\\delar\\Desktop\\sidechain\\development\\racine\\ressources\\csv\\mmi_btc_price.csv"
 mmi_date_csv = "C:\\Users\\delar\\Desktop\\sidechain\\development\\racine\\ressources\\csv\\mmi_date.csv"
 
 lines = []
@@ -152,6 +160,18 @@ with open(mmi_price_csv, 'w', newline='') as f:
 
 # SUCCESS
 
+with open(mmi_btc_price_csv, newline="", encoding="utf-8") as f:
+    r = csv.reader(f)
+    btc_price_csv = [line for line in r]
+
+with open(mmi_btc_price_csv, 'w', newline='') as f:
+    w = csv.writer(f)
+    w.writerow([mmi_btc_price_eod])
+    w.writerows(btc_price_csv)
+# stock the MMI eod BTC price in a csv file, used to display on the website
+
+# SUCCESS
+
 with open(mmi_date_csv, newline="", encoding="utf-8") as f:
     r = csv.reader(f)
     date_csv = [line for line in r]
@@ -160,7 +180,6 @@ with open(mmi_date_csv, 'w', newline='') as f:
     w = csv.writer(f)
     w.writerow([eod_date])
     w.writerows(date_csv)
-
 # stock only the date of MMI in a csv file, used to build the MMI graph.
 
 # SUCCESS
@@ -214,4 +233,4 @@ with smtplib.SMTP_SSL(smtp_address, smtp_port, context=context) as server:
     # send email
     server.sendmail(email_address, email_receiver, message.as_string())
 
-# SUCESS
+# SUCCESS

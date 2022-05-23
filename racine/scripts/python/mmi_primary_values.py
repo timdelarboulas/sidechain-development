@@ -4,7 +4,6 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-import re
 import pandas as pd
 
 # -----------------------------------------------------------------------
@@ -50,8 +49,6 @@ for i in primary_values_list:
         last_day_pl += day_date
 
 # export in a csv file
-
-mmi_primary_values_path = "C:\\Users\\delar\\Desktop\\sidechain\\development\\back\\mmi\\mmi_primary_values.csv"
 
 data = {"Share": ["Universal Music Group B.V", "Spotify", "Tencent Music Entertainment Group", "Warner Music Group Corp.", "Sirius XM Holdings", "Sonos Inc.", "Live Nation Entertainment", "iHeartMedia Inc", "Music Broadcast Ltd", "Believe Digital"],
         "MNEMO": symbol_pl,

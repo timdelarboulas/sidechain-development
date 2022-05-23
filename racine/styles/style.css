@@ -360,6 +360,24 @@ td {
   color: #000000;
 }
 
+.btcPriceDiv{
+  margin-top: -90px;
+  display: flex;
+}
+
+#btcPrice{
+  margin-left: 30px;
+  font-size: 35px;
+}
+
+.btc_exchange{
+  margin-left: 32px;
+  margin-top: -30px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #FF4500;;
+}
+
 #copyright {
   font-size: 20px;
 }
