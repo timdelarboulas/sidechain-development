@@ -1,4 +1,4 @@
-# On cherche à obtenir le dernier taux de change disponible de l'euro (EUR) en dollar américain (USD)
+# We are looking to obtain the last exchange rates in order to build the MMI in a single currency : dollar. We also recover the last USD/BTC rate to have the MMI in BTC.
 
 # Bases
 import requests
