@@ -107,12 +107,12 @@ average_length = len(primary_values_list) + \
 mmi_price_eod = round(
     (float(primary_sum_eod) + float(secondary_sum_eod)) / average_length, 2)
 
-print(mmi_price_eod)
+print(f"Le MMI cote {mmi_price_eod} USD")
 # success
 
 # change MMI USD price into BTC price
 mmi_btc_price_eod = mmi_price_eod / btc_price
-print(mmi_btc_price_eod)
+# print(f"Le MMI vaut {mmi_btc_price_eod} BTC")
 # success
 
 # -----------------------------------------------------------------------
@@ -123,6 +123,17 @@ mmi_price_csv = "C:\\Users\\delar\\Desktop\\sidechain\\development\\racine\\ress
 mmi_btc_price_csv = "C:\\Users\\delar\\Desktop\\sidechain\\development\\racine\\ressources\\csv\\mmi_btc_price.csv"
 mmi_date_csv = "C:\\Users\\delar\\Desktop\\sidechain\\development\\racine\\ressources\\csv\\mmi_date.csv"
 
+# before export of the latest data, we gonna calcul the variation of the latest MMI price with our existing csv file.
+mmi_price_list = pd.read_csv(mmi_price_csv).T.values.tolist()[0]
+mmi_latest_prices = [int(x) for x in mmi_price_list]
+mmi_last_price = mmi_latest_prices[0]
+mmi_variations = round(
+    (float((mmi_price_eod - mmi_last_price) / mmi_last_price)), 6)
+print(f"variation de {mmi_variations}")
+# we have now a variable with the variation between the new and the last price.
+# SUCCESS
+
+# export latest calculate data
 lines = []
 
 with open(mmi_data_csv, 'r') as fp:
@@ -141,8 +152,8 @@ with open(mmi_data_csv, newline="", encoding="utf-8") as f:
 
 with open(mmi_data_csv, 'w', newline='') as f:
     w = csv.writer(f)
-    w.writerow(["EOD price", "EOD date"])
-    w.writerow([mmi_price_eod, eod_date])
+    w.writerow(["EOD price", "EOD date", "Variations"])
+    w.writerow([mmi_price_eod, eod_date, mmi_variations])
     w.writerows(data_csv)
 # Stock the MMI's EOD date in back-up csv file, used to make stats, to parse and maybe build an API.
 
