@@ -45,6 +45,14 @@ async function mmiChart() {
         y: {
           max: 250,
           min: 0,
+          grid: {
+            display: true,
+          },
+        },
+        x: {
+          grid: {
+            display: false,
+          },
         },
       },
     },

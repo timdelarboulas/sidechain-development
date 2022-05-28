@@ -105,7 +105,7 @@ ul {
   padding: 0;
 }
 
-.shareName {
+.MMIHeader {
   margin: 0;
   padding: 0;
   height: 70px;
@@ -115,6 +115,23 @@ ul {
   justify-content: center;
   align-items: center;
   align-content: center;
+}
+
+#MMIheader{
+  color: #ffffff;
+}
+
+#MMIHeaderLink {
+  color: #FF8300;
+}
+
+#copyHeader {
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+#newsLink {
+  color: #ffffff;
 }
 
 li {
@@ -174,7 +191,7 @@ li {
   font-size: 12px;
 }
 
-#aMenu {
+#mnftHeader {
   color: #ffffff;
 }
 
@@ -361,18 +378,18 @@ td {
 }
 
 .btcPriceDiv{
-  margin-top: -90px;
+  margin-top: -100px;
   display: flex;
 }
 
 #btcPrice{
-  margin-left: 30px;
-  font-size: 35px;
+  margin-left: 50px;
+  font-size: 38px;
 }
 
 .btc_exchange{
-  margin-left: 32px;
-  margin-top: -30px;
+  margin-left: 43px;
+  margin-top: -35px;
   margin-bottom: 10px;
   font-size: 15px;
   color: #FF4500;;

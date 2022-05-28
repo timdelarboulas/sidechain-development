@@ -41,3 +41,43 @@ function textAnimationLoop() {
 }
 
 textAnimationLoop();
+
+// change color of the header links
+
+const headerLink = document.getElementById("MMIheader");
+const headerLink2 = document.getElementById("mnftHeader");
+const headerLink3 = document.getElementById("newsLink");
+
+// mousemove
+
+headerLink.addEventListener("mouseover", (e) => {
+  e.target.style.color = "#FF8300";
+  e.target.style.transform = "scale(1.1)";
+});
+
+headerLink2.addEventListener("mouseover", (e) => {
+  e.target.style.color = "#FF8300";
+  e.target.style.transform = "scale(1.1)";
+});
+
+headerLink3.addEventListener("mouseover", (e) => {
+  e.target.style.color = "#FF8300";
+  e.target.style.transform = "scale(1.1)";
+});
+
+// mouseleave
+
+headerLink.addEventListener("mouseleave", (e) => {
+  e.target.style.color = "#ffffff";
+  e.target.style.transform = "scale(1)";
+});
+
+headerLink2.addEventListener("mouseleave", (e) => {
+  e.target.style.color = "#ffffff";
+  e.target.style.transform = "scale(1)";
+});
+
+headerLink3.addEventListener("mouseleave", (e) => {
+  e.target.style.color = "#ffffff";
+  e.target.style.transform = "scale(1)";
+});
