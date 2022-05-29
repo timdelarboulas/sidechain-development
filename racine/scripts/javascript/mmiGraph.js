@@ -10,8 +10,12 @@ async function mmiChart() {
     data: {
       datasets: [
         {
-          label: "MMI Price",
+          label: "Cours",
           data: [
+            { x: mmiDateArray[13], y: mmiPriceArray[13] },
+            { x: mmiDateArray[12], y: mmiPriceArray[12] },
+            { x: mmiDateArray[11], y: mmiPriceArray[11] },
+            { x: mmiDateArray[10], y: mmiPriceArray[10] },
             { x: mmiDateArray[9], y: mmiPriceArray[9] },
             { x: mmiDateArray[8], y: mmiPriceArray[8] },
             { x: mmiDateArray[7], y: mmiPriceArray[7] },
@@ -48,10 +52,18 @@ async function mmiChart() {
           grid: {
             display: true,
           },
+          ticks: {
+            beginAtZero: true,
+          },
         },
         x: {
           grid: {
             display: false,
+          },
+          ticks: {
+            autoSkip: true,
+            maxTicksLimit: 5,
+            beginAtZero: true,
           },
         },
       },

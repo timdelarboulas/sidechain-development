@@ -8,42 +8,69 @@ const csvMMIDate =
 const csvBTCprice =
   "http://127.0.0.1:5500/development/racine/ressources/csv/mmi_btc_price.csv";
 
+const csvMMIvariations =
+  "http://127.0.0.1:5500/development/back/mmi/mmi_data.csv";
+
 const mmiDisplay = document.querySelector(".mmiPrice");
 const mmiDisplayDate = document.getElementById("mmiDate");
 const arrowDisplay = document.getElementById("arrow");
-// const shareHeader = document.getElementById("shareMnemo");
+const navbarPrice = document.getElementById("mmiPriceNavbar");
 const shareDate = document.getElementById("shareDate");
 const shareExValue = "OTC";
 const btcPrice = document.getElementById("btcPrice");
+const variationsHeader = document.getElementById("mmiVariationsHeader");
 
 let mmiPriceArray = []; // sert à créer un array avec les cours du MMI, récupérer dans le CSV
 let mmiDateArray = []; // idem avec la date
 
 const openCSVPrice = async () => {
   const csvResPrice = await fetch(csvMMIPrice);
+  const csvResData = await fetch(csvMMIvariations);
   try {
     const csvTextPrice = await csvResPrice.text();
     const csvFormPrice = String(csvTextPrice.replace(/\r\n|\n|\r/gm, ","));
     const csvArrayPrice = csvFormPrice.split(",");
 
     mmiDisplay.textContent = csvArrayPrice[0];
-    // shareHeader.textContent = "MMI : " + csvArrayPrice[0] + " $";
+    navbarPrice.textContent = csvArrayPrice[0] + " $";
 
     if (parseInt(csvArrayPrice[0]) > parseInt(csvArrayPrice[1])) {
       mmiDisplay.classList.add("PriceUp");
-      // shareHeader.classList.add("HeaderPriceUp");
+      navbarPrice.classList.add("HeaderPriceUp");
       arrowDisplay.style.transform = "rotate(180deg)";
     } else if (csvArrayPrice[0] < csvArrayPrice[1]) {
       mmiDisplay.classList.add("PriceDown");
-      // shareHeader.classList.add("HeaderPriceDown");
+      navbarPrice.classList.add("HeaderPriceDown");
     }
 
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 14; i++) {
       mmiPriceArray.push(csvArrayPrice[i]);
     } // ajoute les 5 derniers cours du MMI depuis le CSV
+
+    const csvTextData = await csvResData.text();
+    const csvFormData = String(csvTextData.replace(/\r\n|\n|\r/gm, ","));
+    const csvArrayData = csvFormData.split(",");
+    // the last MMI variation is always in the 5th position in the Array
+    const variationDecimal = parseFloat(csvArrayData[5]).toFixed(4);
+
+    // formatting of the variations to display
+    const variationDecimalPositiveForm = String(
+      variationDecimal.replace(".", ",")
+    );
+    const variationDecimalNegativeForm = String(
+      variationDecimalPositiveForm.replace("-", "- ")
+    );
+
+    if (variationDecimal >= 0) {
+      variationsHeader.textContent = "+ " + variationDecimalPositiveForm;
+    } else {
+      variationsHeader.textContent = variationDecimalNegativeForm;
+    }
+    // -------------------
   } catch {
     mmiDisplay.textContent = displayErrorText;
-    // shareHeader.textContent = "ERR";
+    navbarPrice.textContent = "ERROR";
+    variationsHeader.textContent = "N/A";
   }
 };
 
@@ -56,9 +83,9 @@ const openCSVDate = async () => {
 
   mmiDisplayDate.textContent = csvArrayDate[0] + " (#" + shareExValue + ")";
 
-  for (i = 0; i < 10; i++) {
+  for (i = 0; i < 14; i++) {
     mmiDateArray.push(csvArrayDate[i]);
-  } // ajoute les 5 dernières dates EOD du MMI depuis le CSV
+  } // ajoute les 14 dernières dates EOD du MMI depuis le CSV
 };
 
 const openBTCPrice = async () => {

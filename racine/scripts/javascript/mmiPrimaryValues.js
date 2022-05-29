@@ -8,6 +8,7 @@ const openCSVPrimaryValues = async () => {
   const pvDatas = await fetch(csvPrimaryValue);
   try {
     let result = [];
+    let priceForm = [];
 
     // transform csv into JSON object
     const pvText = await pvDatas.text();
@@ -31,12 +32,27 @@ const openCSVPrimaryValues = async () => {
 
     primaryValuesInfo.innerHTML =
       `
-    <tr><th>Nom</th><th>Mnémo</th><th>Prix</th><th>Devise</th><th>Volume</th><th>Place</th></tr>
+    <tr><th>Nom</th><th>Mnémo</th><th style="text-align:center;">Prix</th><th style="text-align:center;">Devise</th><th style="text-align:center;">Volume</th><th style="text-align:center;">Place</th></tr>
     ` +
       result
         .map(
           (info) => `
-    <tr><td>${info.Share}</td><td>${info.MNEMO}</td><td>${info.Price}</td><td>${info.Currency}</td><td>${info.Volume}</td><td>${info.Exchange}</td></tr>
+    <tr><td>${info.Share}</td><td>${
+            info.MNEMO
+          }</td><td style="text-align: right; padding-right: 10px;">${parseFloat(
+            info.Price
+          )
+            .toFixed(2)
+            .replace(
+              ".",
+              ","
+            )}</td><td style="text-align: right; padding-right: 10px;">${
+            info.Currency
+          }</td><td style="text-align: right; padding-right: 10px;">${parseInt(
+            info.Volume
+          ).toLocaleString()}</td><td style="text-align: right; padding-right: 10px;">${
+            info.Exchange
+          }</td></tr>
     `
         )
         .join("");

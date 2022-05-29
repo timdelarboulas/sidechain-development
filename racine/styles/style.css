@@ -24,6 +24,10 @@ strong {
   font-weight: normal;
 }
 
+p {
+  text-align: justify;
+}
+
 /*************HEADER***************/
 
 .header {
@@ -150,9 +154,12 @@ li {
   text-shadow: #DF362D 1px 1px 3px;
 }
 
-#shareName {
+#mmiPriceNavbar {
   margin: 0;
+  margin-top: 15.8px;
   padding: 0;
+  width: 30%;
+  height: 40px;
 }
 
 .titlewebsite2 {
@@ -163,6 +170,31 @@ li {
 .titlewebsite2 > a {
   text-decoration: none;
   color: #ff8300;
+  font-size: larger;
+  margin-right: -10px;
+}
+
+#MMInavbarTitle {
+  width: 30%;
+  margin-right: 90px;
+  font-size: larger;
+}
+
+#letterMMIHeader {
+  color: #ff8300;
+  padding: 0;
+  margin-top: 1px;
+  margin-left: 14px;
+  margin-right: 0.5px;
+  display: inline-block;
+  font-weight: 100;
+}
+
+#copyrightHeader {
+  font-size: 15px;
+  margin-left: 4px;
+  margin-top: 18px;
+  font-weight: 100;
 }
 
 .share {
@@ -240,6 +272,15 @@ q {
 
 /*------------PRIMARY VALUES---------------*/
 
+/*
+  Red Orange #FF4500
+  Orange #FF8300
+  Chili Pepper #DF362D
+  Chartreuse #B7AC44
+  Green light #78b74477
+  Green #78b744
+*/
+
 .primaryValuesInfo{
   width: 100%;
   margin-top: 20px;
@@ -249,6 +290,25 @@ q {
 
   border: 1px solid #000000;
 }
+
+#tableMMI {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tableMMI th {
+  background-color: #FF8300;
+  color: #ffffff;
+}
+
+#tableMMI td, #tableMMI th {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+#tableMMI tr:nth-child(even) {background-color: #f2f2f2;}
+
+#tableMMI tr:hover {background-color: #ddd;}
 
 th {
   text-align: left;
