@@ -42,15 +42,20 @@ if r.ok:
 
 
 # BTC price
+# The BTC_Price variable comes from a free API called Coinapi and its API calls do not work very well.
+# So, to avoid errors, we put an exception on the API call
 url = "https://rest.coinapi.io/v1/trades/latest?limit=10&filter_symbol_id=COINBASE_SPOT_BTC_USD"
 headers = {"X-CoinAPI-Key": "100D5685-A43D-47E6-9293-DC72F831C71D"}
 r = requests.get(url, headers=headers)
 if r.ok:
-    soup = BeautifulSoup(r.text, "html.parser")
-    js = json.loads(soup.text)
-    key = "price"
-    for d in js:
-        if key in d:
-            btc_price = d[key]
-    print(btc_price)
+    try:
+        soup = BeautifulSoup(r.text, "html.parser")
+        js = json.loads(soup.text)
+        key = "price"
+        for d in js:
+            if key in d:
+                btc_price = d[key]
+        print(btc_price)
+    except Exception:
+        pass
     # success => lastest BTC/USD price from COINBASE

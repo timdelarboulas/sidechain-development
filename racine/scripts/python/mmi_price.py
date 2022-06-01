@@ -7,7 +7,14 @@ import requests
 from bs4 import BeautifulSoup
 from currencies_change_rate import eurusd_change_rate
 from currencies_change_rate import inrusd_change_rate
-from currencies_change_rate import btc_price
+
+# The BTC_Price variable comes from a free API called Coinapi and its API calls do not work very well.
+# So, to avoid errors, we put exceptions on the import of the BTC_Price variable and on the rest of the script using this variable
+try:
+    from currencies_change_rate import btc_price
+except ImportError:
+    pass
+
 import json
 import csv
 import pandas as pd
@@ -111,8 +118,13 @@ print(f"Le MMI cote {mmi_price_eod} USD")
 # success
 
 # change MMI USD price into BTC price
-mmi_btc_price_eod = mmi_price_eod / btc_price
-# print(f"Le MMI vaut {mmi_btc_price_eod} BTC")
+# exceptions for the the btc_price variable
+try:
+    mmi_btc_price_eod = mmi_price_eod / btc_price
+    print(f"Le MMI vaut {mmi_btc_price_eod} BTC")
+except Exception:
+    pass
+
 # success
 
 # -----------------------------------------------------------------------
@@ -125,7 +137,7 @@ mmi_date_csv = "C:\\Users\\delar\\Desktop\\sidechain\\development\\racine\\resso
 
 # before export of the latest data, we gonna calcul the variation of the latest MMI price with our existing csv file.
 mmi_price_list = pd.read_csv(mmi_price_csv).T.values.tolist()[0]
-mmi_latest_prices = [int(x) for x in mmi_price_list]
+mmi_latest_prices = [float(x) for x in mmi_price_list]
 mmi_last_price = mmi_latest_prices[0]
 mmi_variations = round(
     (float((mmi_price_eod - mmi_last_price) / mmi_last_price)), 6)
@@ -171,15 +183,22 @@ with open(mmi_price_csv, 'w', newline='') as f:
 
 # SUCCESS
 
-with open(mmi_btc_price_csv, newline="", encoding="utf-8") as f:
-    r = csv.reader(f)
-    btc_price_csv = [line for line in r]
+# exceptions for the the btc_price variable
+try:
+    if "btc_price_csv" in locals():
+        # check if the variable "mmi_price_btc" exist before manipulate the csv file. Without this step, the csv file is crushed, remains without data if this variable do not exist.
+        with open(mmi_btc_price_csv, newline="", encoding="utf-8") as f:
+            r = csv.reader(f)
+            btc_price_csv = [line for line in r]
 
-with open(mmi_btc_price_csv, 'w', newline='') as f:
-    w = csv.writer(f)
-    w.writerow([mmi_btc_price_eod])
-    w.writerows(btc_price_csv)
-# stock the MMI eod BTC price in a csv file, used to display on the website
+        with open(mmi_btc_price_csv, 'w', newline='') as f:
+            w = csv.writer(f)
+            w.writerow([mmi_btc_price_eod])
+            w.writerows(btc_price_csv)
+        # stock the MMI eod BTC price in a csv file, used to display on the website
+except Exception:
+    pass
+
 
 # SUCCESS
 
