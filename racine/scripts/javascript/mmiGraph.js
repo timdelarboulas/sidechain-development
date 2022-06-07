@@ -1,6 +1,8 @@
 // Afficher le graph du MMI sur le site
 // npm install chart.js
 
+const button1week = document.getElementById("mmiGraph1week");
+
 async function mmiChart() {
   await openFiles();
 

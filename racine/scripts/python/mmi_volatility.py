@@ -12,7 +12,7 @@ mmi_variations_list = pd.read_csv(
     mmi_global_data, names=["Variations"]).T.values.tolist()[0]
 
 # convert string list into a number list
-mmi_variation_datas = [int(x) for x in mmi_variations_list]
+mmi_variation_datas = [float(x) for x in mmi_variations_list]
 
 # Volatility calcul
 
