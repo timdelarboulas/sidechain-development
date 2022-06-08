@@ -2,12 +2,13 @@
 // npm install chart.js
 
 const button1week = document.getElementById("mmiGraph1week");
+const button2weeks = document.getElementById("mmiGraph2weeks");
 
 async function mmiChart() {
   await openFiles();
 
   const ctx = document.getElementById("mmiChart").getContext("2d");
-  const myChart = new Chart(ctx, {
+  const config = {
     type: "line",
     data: {
       datasets: [
@@ -56,6 +57,7 @@ async function mmiChart() {
           },
           ticks: {
             beginAtZero: true,
+            maxTicksLimit: 8,
           },
         },
         x: {
@@ -70,6 +72,39 @@ async function mmiChart() {
         },
       },
     },
+  };
+
+  const myChart = new Chart(ctx, config);
+
+  button1week.addEventListener("click", () => {
+    ((myChart.data.datasets[0].data = [
+      { x: mmiDateArray[4], y: mmiPriceArray[4] },
+      { x: mmiDateArray[3], y: mmiPriceArray[3] },
+      { x: mmiDateArray[2], y: mmiPriceArray[2] },
+      { x: mmiDateArray[1], y: mmiPriceArray[1] },
+      { x: mmiDateArray[0], y: mmiPriceArray[0] },
+    ]),
+    (myChart.options.scales.y.max = 160),
+    (myChart.options.scales.y.min = 120)),
+      myChart.update();
+  });
+
+  button2weeks.addEventListener("click", () => {
+    ((myChart.data.datasets[0].data = [
+      { x: mmiDateArray[9], y: mmiPriceArray[9] },
+      { x: mmiDateArray[8], y: mmiPriceArray[8] },
+      { x: mmiDateArray[7], y: mmiPriceArray[7] },
+      { x: mmiDateArray[6], y: mmiPriceArray[6] },
+      { x: mmiDateArray[5], y: mmiPriceArray[5] },
+      { x: mmiDateArray[4], y: mmiPriceArray[4] },
+      { x: mmiDateArray[3], y: mmiPriceArray[3] },
+      { x: mmiDateArray[2], y: mmiPriceArray[2] },
+      { x: mmiDateArray[1], y: mmiPriceArray[1] },
+      { x: mmiDateArray[0], y: mmiPriceArray[0] },
+    ]),
+    (myChart.options.scales.y.max = 200),
+    (myChart.options.scales.y.min = 0)),
+      myChart.update();
   });
 }
 
