@@ -1,5 +1,4 @@
 # import
-from numpy import var
 import pandas as pd
 import math
 
@@ -10,9 +9,11 @@ mmi_global_data = r"C:\Users\delar\Desktop\sidechain\development\back\mmi\mmi_da
 # get the data from the file mmi_price.csv and create a list with it
 mmi_variations_list = pd.read_csv(
     mmi_global_data, names=["Variations"]).T.values.tolist()[0]
+mmi_variations_list.pop(0) # delete the title of the column
 
 # convert string list into a number list
-mmi_variation_datas = [float(x) for x in mmi_variations_list]
+mmi_variation_datas = [float(x) for x in mmi_variations_list if x == x]
+print(mmi_variation_datas)
 
 # Volatility calcul
 
@@ -24,8 +25,8 @@ variance = sum(deviations) / n
 
 # Standard deviation
 standard_deviation = round(math.sqrt(variance), 10)
-standard_deviation_percentage = standard_deviation * 100
-print(standard_deviation_percentage)
+standard_deviation_percentage = round((standard_deviation * 100), 2)
+print(f"Volatilité de {standard_deviation_percentage}%")
 
 # SUCCESS
 

@@ -19,6 +19,7 @@ const shareDate = document.getElementById("shareDate");
 const shareExValue = "OTC";
 const btcPrice = document.getElementById("btcPrice");
 const variationsHeader = document.getElementById("mmiVariationsHeader");
+const dynamiqueV = document.querySelector(".dynVariation");
 
 let mmiPriceArray = []; // sert à créer un array avec les cours du MMI, récupérer dans le CSV
 let mmiDateArray = []; // idem avec la date
@@ -30,6 +31,8 @@ const openCSVPrice = async () => {
     const csvTextPrice = await csvResPrice.text();
     const csvFormPrice = String(csvTextPrice.replace(/\r\n|\n|\r/gm, ","));
     const csvArrayPrice = csvFormPrice.split(",");
+
+    // mmiPriceoftheDay = csvArrayPrice[0].replace(".", ",");
 
     mmiDisplay.textContent = csvArrayPrice[0];
     navbarPrice.textContent = csvArrayPrice[0] + " $";
@@ -43,15 +46,28 @@ const openCSVPrice = async () => {
       navbarPrice.classList.add("HeaderPriceDown");
     }
 
-    for (i = 0; i < 14; i++) {
+    for (i = 0; i < 29; i++) {
       mmiPriceArray.push(csvArrayPrice[i]);
-    } // ajoute les 5 derniers cours du MMI depuis le CSV
+    } // ajoute les  derniers cours du MMI depuis le CSV
+
+    // variation display
 
     const csvTextData = await csvResData.text();
     const csvFormData = String(csvTextData.replace(/\r\n|\n|\r/gm, ","));
     const csvArrayData = csvFormData.split(",");
     // the last MMI variation is always in the 5th position in the Array
-    const variationDecimal = parseFloat(csvArrayData[5]).toFixed(4);
+    const variationDecimal = parseFloat(csvArrayData[5]).toFixed(5);
+    const variationPercentage = (variationDecimal * 100).toFixed(2);
+
+    variationPercentageDisplay = variationPercentage.replace(".", ",");
+
+    dynamiqueV.textContent = variationPercentageDisplay + " %";
+
+    if (variationPercentage < 0) {
+      dynamiqueV.style.backgroundColor = "#DF362D";
+    } else {
+      dynamiqueV.style.backgroundColor = "#78B74477";
+    }
 
     // formatting of the variations to display
     const variationDecimalPositiveForm = String(
@@ -83,7 +99,7 @@ const openCSVDate = async () => {
 
   mmiDisplayDate.textContent = csvArrayDate[0] + " (#" + shareExValue + ")";
 
-  for (i = 0; i < 14; i++) {
+  for (i = 0; i < 29; i++) {
     mmiDateArray.push(csvArrayDate[i]);
   } // ajoute les 14 dernières dates EOD du MMI depuis le CSV
 };

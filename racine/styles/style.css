@@ -14,6 +14,10 @@
   text-decoration: none;
 }
 
+a:hover{
+  text-decoration: underline;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -26,6 +30,10 @@ strong {
 
 p {
   text-align: justify;
+}
+
+.orangeLink {
+  color: #FF8300;
 }
 
 /*************HEADER***************/
@@ -109,6 +117,7 @@ ul {
   padding: 0;
 }
 
+
 .MMIHeader {
   margin: 0;
   padding: 0;
@@ -121,8 +130,13 @@ ul {
   align-content: center;
 }
 
+
 #MMIheader{
   color: #ffffff;
+}
+
+#MMIheader:hover{
+  text-decoration: none;
 }
 
 #MMIHeaderLink {
@@ -136,6 +150,10 @@ ul {
 
 #newsLink {
   color: #ffffff;
+}
+
+#newsLink:hover{
+  text-decoration: none;
 }
 
 li {
@@ -225,6 +243,10 @@ li {
 
 #mnftHeader {
   color: #ffffff;
+}
+
+#mnftHeader:hover{
+  text-decoration: none;
 }
 
 /*************BODY***************/
@@ -387,11 +409,34 @@ td {
 
 /*------------GRAPH---------------*/
 
+/*------------GRAPH OPTIONS---------------*/
+
+.graphOptions {
+  margin-bottom: 10px;
+ display: flex;
+ flex: wrap;
+ width: 100%;
+ height: 30px;
+}
+
+.dynVariationDIV{
+  height: 30px;
+  margin-left: 460px;
+  justify-content: right;
+}
+
+.dynVariation{
+  text-align: right;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+}
+
 /* button graph data */
 
 .xAxesMMI {
   display: flex;
-  margin-left: 60px;
+  margin-left: 40px;
   margin-bottom: 5px;
 }
 
@@ -466,7 +511,7 @@ td {
   margin-top: 10px;
   display: flex;
   width: auto;
-  padding-right: 50px;
+  padding-right: 40px;
   justify-content: right;
 }
 
