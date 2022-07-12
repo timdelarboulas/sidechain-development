@@ -87,12 +87,13 @@ for i in primary_values_list:
             primary_values_data_eod += close
         # add the other values, already in dollars, to the array of global values
 
-# calcul de la sommes des valeurs secondaires
+
+# calculation of the sum of the secondary values
 secondary_values_list = ["GOOGL", "SNE", "AAPL", "YNDX", "AMZN", "NTES"]
 secondary_weighted = [0.922, 0.103, 0.087, 0.038, 0.068, 0.104]
 
 secondary_values_data_eod = []
-secondary_sum_eod = 0  # total de toutes les valeurs eod primaires
+secondary_sum_eod = 0  # sum of all secondary eod values
 
 for i in secondary_values_list:
     r = requests.get(url + access_key + url_symbol + i + url_limit + limit)
@@ -102,14 +103,14 @@ for i in secondary_values_list:
         close = (d.get("close")
                  for d in js['data'] if d.get("close"))
         secondary_values_data_eod += close
-        # liste avec toutes les valeurs secondaires => chaque valeur doit être pondérée par secondary_weighted
+        # list with all secondary values => each value must be weighted by secondary_weighted
 
 for i, y in zip(secondary_values_data_eod, secondary_weighted):
     secondary_sum_eod += i * y
-    # somme des valeurs eod secondaires pondérées
+    # sum of secondary eod weighted data
 
 average_length = len(primary_values_list) + \
-    len(secondary_values_list)  # nombre total de valeurs
+    len(secondary_values_list)  # total number of values
 mmi_price_eod = round(
     (float(primary_sum_eod) + float(secondary_sum_eod)) / average_length, 2)
 
@@ -219,12 +220,12 @@ with open(mmi_date_csv, 'w', newline='') as f:
 # Allows you to check if the instance of VM, using to run this script automatically, work correctly.
 
 # supplier
-smtp_address = 'smtp.gmail.com'
-smtp_port = 465
+smtp_address = 'smtp-mail.outlook.com'
+smtp_port = 587
 
 # sender address
-email_address = 'sidechainfinance@gmail.com'
-email_password = 'iRZ@)9P89qh('
+email_address = 'mmi_daily_price@outlook.com'
+email_password = 'Aa19970306?!'
 
 # receiver address
 email_receiver = 'sidechainfinance@gmail.com'
@@ -236,18 +237,22 @@ message["From"] = email_address
 message["To"] = email_receiver
 
 texte = '''
-{} USD
-from mmi_price.py localized in VM eodmmi01 (10.132.0.2) - Compute Engine by Google Cloud Platform
-'''.format(mmi_price_eod)
+{} USD.
+Variation de {}.
+{}
+from mmi_price.py localized in VM eodmmi01 (35.195.222.208) - Compute Engine by Google Cloud Platform
+'''.format(mmi_price_eod, mmi_variations, eod_date)
 
 html = '''
 <html>
 <body>
-<h1>{} USD</h1>
-<p>from mmi_price.py localized in VM eodmmi01 (10.132.0.2) - Compute Engine by Google Cloud Platform</p>
+<h1>{} USD.</h1>
+<h2 style="font-weight:normal;color:orange;">Variation de {}.</h2>
+<h3 style="font-weight:normal;">{}</h3>
+<p>from mmi_price.py localized in VM eodmmi01 (35.195.222.208) - Compute Engine by Google Cloud Platform</p>
 </body>
 </html>
-'''.format(mmi_price_eod)
+'''.format(mmi_price_eod, mmi_variations, eod_date)
 
 texte_mime = MIMEText(texte, 'plain')
 html_mime = MIMEText(html, 'html')
@@ -256,8 +261,9 @@ message.attach(html_mime)
 
 # connexion to supplier and sending email to sidechain address
 context = ssl.create_default_context()
-with smtplib.SMTP_SSL(smtp_address, smtp_port, context=context) as server:
+with smtplib.SMTP(smtp_address, smtp_port) as server:
     # connexion
+    server.starttls(context=context)
     server.login(email_address, email_password)
     # send email
     server.sendmail(email_address, email_receiver, message.as_string())
