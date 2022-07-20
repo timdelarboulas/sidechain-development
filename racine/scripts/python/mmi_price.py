@@ -49,7 +49,7 @@ if r.ok:
 
 # the foreign exchange conversion into dollars and the calculation of the sum of the primary values
 primary_values_list = ["UMG.XAMS", "SPOT", "TME", "WMG",
-                       "SIRI", "SONO", "LYV", "IHRT", "RADIOCITY.XNSE", "BLV"]
+                       "SIRI", "SONO", "LYV", "IHRT", "RADIOCITY.XNSE", "BLV.XPAR"]
 
 primary_values_data_eod = []
 primary_sum_eod = 0  # total of all primary values
@@ -87,9 +87,11 @@ for i in primary_values_list:
             primary_values_data_eod += close
         # add the other values, already in dollars, to the array of global values
 
+# sum of the list of all primary values
+primary_sum_eod = float(sum(primary_values_data_eod))
 
 # calculation of the sum of the secondary values
-secondary_values_list = ["GOOGL", "SNE", "AAPL", "YNDX", "AMZN", "NTES"]
+secondary_values_list = ["GOOGL", "SONY", "AAPL", "YNDX", "AMZN", "NTES"]
 secondary_weighted = [0.922, 0.103, 0.087, 0.038, 0.068, 0.104]
 
 secondary_values_data_eod = []
