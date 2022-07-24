@@ -19,7 +19,7 @@ limit = str(1)
 
 # Get the last informations of the primary values
 primary_values_list = ["UMG.XAMS", "SPOT", "TME", "WMG",
-                       "SIRI", "SONO", "LYV", "IHRT", "RADIOCITY.XNSE", "BLV"]
+                       "SIRI", "SONO", "LYV", "IHRT", "RADIOCITY.XNSE", "BLV.XPAR"]
 informations_primary_list = []
 close_pl = []
 volume_pl = []

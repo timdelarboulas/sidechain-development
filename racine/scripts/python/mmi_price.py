@@ -18,6 +18,7 @@ except ImportError:
 import json
 import csv
 import pandas as pd
+import math
 
 # email
 from email.mime.multipart import MIMEMultipart
@@ -66,7 +67,7 @@ for i in primary_values_list:
             primary_values_data_eod += umg_close
             # convert the UMG share in euros into dollars and add it to the array of global values
 
-        elif i == "BLV":
+        elif i == "BLV.XPAR":
             eurusd2_exchange_rate = str(float("".join(map(str, [d.get("close")
                                                                 for d in js['data'] if d.get("close")]))) * eurusd_change_rate)
             blv_close = [float(eurusd2_exchange_rate)]
@@ -201,7 +202,6 @@ try:
 except Exception:
     pass
 
-
 # SUCCESS
 
 with open(mmi_date_csv, newline="", encoding="utf-8") as f:
@@ -222,52 +222,52 @@ with open(mmi_date_csv, 'w', newline='') as f:
 # Allows you to check if the instance of VM, using to run this script automatically, work correctly.
 
 # supplier
-smtp_address = 'smtp-mail.outlook.com'
-smtp_port = 587
+# smtp_address = 'mail.yahoo.com'
+# smtp_port = 587
 
-# sender address
-email_address = 'mmi_daily_price@outlook.com'
-email_password = 'Aa19970306?!'
+# # sender address
+# email_address = 'mmi_daily_price@yahoo.com'
+# email_password = 'Aa19970306?!'
 
-# receiver address
-email_receiver = 'sidechainfinance@gmail.com'
+# # receiver address
+# email_receiver = 'sidechainfinance@gmail.com'
 
-# message
-message = MIMEMultipart("alternative")
-message["Subject"] = "MMI daily EOD Price"
-message["From"] = email_address
-message["To"] = email_receiver
+# # message
+# message = MIMEMultipart("alternative")
+# message["Subject"] = "MMI daily EOD Price"
+# message["From"] = email_address
+# message["To"] = email_receiver
 
-texte = '''
-{} USD.
-Variation de {}.
-{}
-from mmi_price.py localized in VM eodmmi01 (35.195.222.208) - Compute Engine by Google Cloud Platform
-'''.format(mmi_price_eod, mmi_variations, eod_date)
+# texte = '''
+# {} USD.
+# Variation de {}.
+# {}
+# from mmi_price.py localized in VM eodmmi01 (35.195.222.208) - Compute Engine by Google Cloud Platform
+# '''.format(mmi_price_eod, mmi_variations, eod_date)
 
-html = '''
-<html>
-<body>
-<h1>{} USD.</h1>
-<h2 style="font-weight:normal;color:orange;">Variation de {}.</h2>
-<h3 style="font-weight:normal;">{}</h3>
-<p>from mmi_price.py localized in VM eodmmi01 (35.195.222.208) - Compute Engine by Google Cloud Platform</p>
-</body>
-</html>
-'''.format(mmi_price_eod, mmi_variations, eod_date)
+# html = '''
+# <html>
+# <body>
+# <h1>{} USD.</h1>
+# <h2 style="font-weight:normal;color:orange;">Variation de {}.</h2>
+# <h3 style="font-weight:normal;">{}</h3>
+# <p>from mmi_price.py localized in VM eodmmi01 (35.195.222.208) - Compute Engine by Google Cloud Platform</p>
+# </body>
+# </html>
+# '''.format(mmi_price_eod, mmi_variations, eod_date)
 
-texte_mime = MIMEText(texte, 'plain')
-html_mime = MIMEText(html, 'html')
-message.attach(texte_mime)
-message.attach(html_mime)
+# texte_mime = MIMEText(texte, 'plain')
+# html_mime = MIMEText(html, 'html')
+# message.attach(texte_mime)
+# message.attach(html_mime)
 
-# connexion to supplier and sending email to sidechain address
-context = ssl.create_default_context()
-with smtplib.SMTP(smtp_address, smtp_port) as server:
-    # connexion
-    server.starttls(context=context)
-    server.login(email_address, email_password)
-    # send email
-    server.sendmail(email_address, email_receiver, message.as_string())
+# # connexion to supplier and sending email to sidechain address
+# context = ssl.create_default_context()
+# with smtplib.SMTP(smtp_address, smtp_port) as server:
+#     # connexion
+#     server.starttls(context=context)
+#     server.login(email_address, email_password)
+#     # send email
+#     server.sendmail(email_address, email_receiver, message.as_string())
 
-# SUCCESS
+# FAILED

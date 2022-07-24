@@ -14,7 +14,7 @@ async function mmiChart() {
   await openFiles();
 
   maxValue = Math.round(Math.max(...mmiPriceArray)); // get the max value from the array of the MMI's Price
-  mmiScalesYMax = Math.round(maxValue / 10) * 10 + 50; // convert maxValue to the nearest multiple of 10 and add a number for more space
+  mmiScalesYMax = Math.round(maxValue / 10) * 10 + 20; // convert maxValue to the nearest multiple of 10 and add a number for more space
   // this permit to have a dynamique max value for the Y axe
 
   const ctx = document.getElementById("mmiChart").getContext("2d");

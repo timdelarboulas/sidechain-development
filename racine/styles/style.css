@@ -412,7 +412,7 @@ td {
 /*------------GRAPH OPTIONS---------------*/
 
 .graphOptions {
-  margin-bottom: 10px;
+ margin-bottom: 10px;
  display: flex;
  flex: wrap;
  width: 100%;
@@ -420,9 +420,11 @@ td {
 }
 
 .dynVariationDIV{
+  display: inline-flex;
   height: 30px;
-  margin-left: 460px;
+  margin-right: 55px;
   justify-content: right;
+  flex: 1 1;
 }
 
 .dynVariation{
