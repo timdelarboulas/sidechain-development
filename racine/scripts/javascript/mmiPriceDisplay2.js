@@ -1,54 +1,50 @@
-// récupérer les données du MMI depuis les fichiers CSV et les afficher sur le site.
+// get the MMI data from the csv files and display on the website
 
-const csvMMIPrice =
-  "http://127.0.0.1:5500/development/racine/ressources/csv/mmi_price.csv";
-const csvMMIDate =
-  "http://127.0.0.1:5500/development/racine/ressources/csv/mmi_date.csv";
+// const csvMMIPrice =
+//   "http://127.0.0.1:5500/development/racine/ressources/csv/mmi_price.csv";
+// const csvMMIDate =
+//   "http://127.0.0.1:5500/development/racine/ressources/csv/mmi_date.csv";
 
-const csvBTCprice =
-  "http://127.0.0.1:5500/development/racine/ressources/csv/mmi_btc_price.csv";
+// const csvBTCprice =
+//   "http://127.0.0.1:5500/development/racine/ressources/csv/mmi_btc_price.csv";
 
-const csvMMIvariations =
-  "http://127.0.0.1:5500/development/back/mmi/mmi_data.csv";
+// const csvMMIvariations =
+//   "http://127.0.0.1:5500/development/back/mmi/mmi_data.csv";
 
-const mmiDisplay = document.querySelector(".mmiPrice");
-const mmiDisplayDate = document.getElementById("mmiDate");
-const arrowDisplay = document.getElementById("arrow");
-const navbarPrice = document.getElementById("mmiPriceNavbar");
-const shareDate = document.getElementById("shareDate");
-const shareExValue = "OTC";
-const btcPrice = document.getElementById("btcPrice");
-const variationsHeader = document.getElementById("mmiVariationsHeader");
-const dynamiqueV = document.querySelector(".dynVariation");
+// const mmiDisplay = document.querySelector(".mmiPrice");
+// const mmiDisplayDate = document.getElementById("mmiDate");
+const arrowDisplayAbout = document.getElementById("arrow");
+const arrowDisplayAbout2 = document.getElementById("arrow2");
+// const navbarPrice = document.getElementById("mmiPriceNavbar");
+// const shareDate = document.getElementById("shareDate");
+// const shareExValue = "OTC";
+// const btcPrice = document.getElementById("btcPrice");
+// const variationsHeader = document.getElementById("mmiVariationsHeader");
+const dynamiqueVAbout = document.querySelector(".dynVariation2");
 
 let mmiPriceArray = []; // array with MMI price
 let mmiDateArray = []; // same with the date
 
-const openCSVPrice = async () => {
-  const csvResPrice = await fetch(csvMMIPrice);
-  const csvResData = await fetch(csvMMIvariations);
+const priceDisplay = async () => {
+  await openCSVPrice();
   try {
-    const csvTextPrice = await csvResPrice.text();
-    const csvFormPrice = String(csvTextPrice.replace(/\r\n|\n|\r/gm, ","));
-    const csvArrayPrice = csvFormPrice.split(",");
-
     // mmiPriceoftheDay = csvArrayPrice[0].replace(".", ",");
-
     mmiDisplay.textContent = csvArrayPrice[0];
     navbarPrice.textContent = csvArrayPrice[0] + " $";
 
     if (parseFloat(csvArrayPrice[0]) > parseFloat(csvArrayPrice[1])) {
       mmiDisplay.classList.add("PriceUp");
       navbarPrice.classList.add("HeaderPriceUp");
-      arrowDisplay.style.transform = "rotate(180deg)";
+      arrowDisplayAbout.style.transform = "rotate(180deg)";
+      arrowDisplayAbout2.style.transform = "rotate(180deg)";
     } else if (parseFloat(csvArrayPrice[0]) < parseFloat(csvArrayPrice[1])) {
       mmiDisplay.classList.add("PriceDown");
       navbarPrice.classList.add("HeaderPriceDown");
     }
 
-    for (i = 0; i < 29; i++) {
-      mmiPriceArray.push(csvArrayPrice[i]);
-    } // add the lastest MMI price from the csv file
+    // for (i = 0; i < 29; i++) {
+    //   mmiPriceArray.push(csvArrayPrice[i]);
+    // } // add the lastest MMI price from the csv file
 
     // variation display
 
@@ -59,9 +55,9 @@ const openCSVPrice = async () => {
     const variationDecimal = parseFloat(csvArrayData[5]).toFixed(5);
     const variationPercentage = (variationDecimal * 100).toFixed(2);
 
-    variationPercentageDisplay = variationPercentage.replace(".", ",");
+    // variationPercentageDisplay = variationPercentage.replace(".", ",");
 
-    dynamiqueV.textContent = variationPercentageDisplay + " %";
+    dynamiqueVAbout.textContent = variationPercentageDisplay + " %";
 
     if (variationPercentage < 0) {
       dynamiqueV.style.backgroundColor = "#DF362D";
@@ -87,6 +83,9 @@ const openCSVPrice = async () => {
     mmiDisplay.textContent = displayErrorText;
     navbarPrice.textContent = "ERROR";
     variationsHeader.textContent = "N/A";
+
+    arrowDisplayAbout.style.visibility = "hidden";
+    arrowDisplayAbout2.style.visibility = "hidden";
   }
 };
 
@@ -98,10 +97,6 @@ const openCSVDate = async () => {
   const csvArrayDate = csvFormDate.split(",");
 
   mmiDisplayDate.textContent = csvArrayDate[0] + " (#" + shareExValue + ")";
-
-  for (i = 0; i < 29; i++) {
-    mmiDateArray.push(csvArrayDate[i]);
-  } // add the lastest dates from the csv file
 };
 
 const openBTCPrice = async () => {

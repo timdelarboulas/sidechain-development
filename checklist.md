@@ -2,16 +2,16 @@
 
 Tâches restantes à effectuer.
 
-DEVELOPPMENT
+COORECTION
 
-- étudier l'API d'OpenSea
-- automatiser le calculer de l'écart-type du MMI
-- calculer le coefficient BETA
+- Correct the export of MMI BTC Price (mmi_price.py)
 
-DISPLAY
+DEVELOPMENT
 
--
+- Study OpenSea's API
+- Calculate of beta coefficient
 
 BACK
 
-- mettre en ligne le site via un serveur Apache sur la VM
+- Buy domains
+- Set an Apache servor to lauch the website

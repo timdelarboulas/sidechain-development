@@ -291,6 +291,18 @@ q {
   font-size: 10px;
 }
 
+.aboutMMI {
+  display: inline-block;
+  width: auto;
+  height: fit-content;
+  text-align: left;
+} 
+
+#mmiTextAbout {
+  margin-top: -20px;
+  margin-bottom: 40px;
+}
+
 
 /*------------PRIMARY VALUES---------------*/
 
@@ -517,10 +529,37 @@ td {
   justify-content: right;
 }
 
+.mmiPriceAboutDIV{
+  display: flex;
+}
+
+.mmiPriceDisplayAbout {
+  flex: 1 1;
+  margin-top: 10px;
+  display: flex;
+  width: auto;
+  padding-left: 65px;
+  justify-content: left;
+}
+
 .eodDate {
   text-align: right;
   margin-top: -15px;
   width: 95%;
+}
+
+.eodDate2 {
+  text-align: left;
+  margin-bottom: 20px;
+  margin-top: -15px;
+  margin-left: 26px;
+}
+
+.dynVariationDIV2{
+  display: inline-flex;
+  margin-top: 30px;
+  height: 40px;
+  text-align: right;
 }
 
 .mmiPrice {
@@ -539,6 +578,21 @@ td {
   height: 30px;
   margin-top: 15px;
   margin-right: 40px;
+}
+
+.ArrowAbout {
+  width: 25px;
+  height: 25px;
+  margin-top: -5px;
+  margin-left: -50px;
+}
+
+.ArrowAbout2 {
+  width: 25px;
+  height: 25px;
+  margin-top: 2px;
+  margin-left: -25px;
+  transform: rotate(180deg);
 }
 
 .PriceUp {
@@ -594,6 +648,10 @@ td {
 
 #letterMMI {
   color: #ff8300;
+}
+
+#MMILink{
+  color: #000000;
 }
 
 .mmiText {

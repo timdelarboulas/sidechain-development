@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidechain: Le MMI</title>
+    <title>Market Music Index</title>
 
     <!--styles-->
     <link rel="stylesheet" href="../styles/style.css">
@@ -17,12 +17,9 @@
     <!--scripts-->
     <script src="../scripts/javascript/errorText.js" defer type="text/javascript"></script>
     <script src="../scripts/javascript/navbarScroll.js" defer type="text/javascript"></script>
-    <script src="../scripts/javascript/spotifyFooter.js" defer type="text/javascript"></script>
     <script src="../scripts/javascript/sidechainAnim.js" defer type="text/javascript"></script>
-    <script src="./scripts/javascript/mmiPriceDisplay.js" defer type="text/javascript"></script>
-    <script src="./scripts/javascript/mmiPrimaryValues.js" defer type="text/javascript"></script>
-    <script src="./scripts/javascript/mmiChartSettings.js" defer type="text/javascript"></script>
-    <script src="./scripts/javascript/mmiGraph.js" defer type="text/javascript"></script>
+    <script src="../scripts/javascript/mmiPriceDisplay.js" defer type="text/javascript"></script>
+    <script src="../scripts/javascript/mmiChart2.js" defer type="text/javascript"></script>
 
 </head>
 <body>
@@ -46,7 +43,44 @@
     </nav>
     
     <div class="body">
-        <h1 class="mmititle">A propos du <strong><span id="letterMMI">M</span><span id="letterMMI">M</span><span id="letterMMI">I</span><span id="copyright"></span></strong>...</h1>
-        <h3 class="mmisubtitle">MMI World EW (EOD)</h3>
+        <div class="aboutMMI">
+            <h1 class="mmititle"><strong><span id="letterMMI">M</span>usic <span id="letterMMI">M</span>arket <span id="letterMMI">I</span>ndex<span id="copyright"></span></strong></h1>
+        </div>
+        <div class="mmiText" id="mmiTextAbout">
+            L'industrie de la musique a une demande sous-jacente massive. La technologie s'installe profondement dans le secteur avec l'arrivée du Metaverse et du Web3, la compétitivité et la multitude d'acteurs s'intensifient et de nouvelles opportunités d'investissement fleurissent.<br>Dans ce contexte, nous avons développer le <strong class="mmiTextEmphasize">Market Music Index</strong>. Le MMI est <strong class="mmiTextEmphasize">l'indice</strong> <strong class="mmiTextEmphasize">boursier</strong>  <span class="mmiTextEmphasize">de référence</span> du secteur musicale. Il est composé des plus importantes valeurs boursières mondiales de l'industrie musicale, selectionnées selon leur implication directe sur le <strong>marché de la musique</strong> (valeurs primaires) et de leur implication indirecte et/ou partielle (valeurs secondaires).
+        </div>
+        <div class="mmiPriceAboutDIV">
+            <div class="mmiPriceDisplayAbout">
+                <h2 class="mmiPrice"></h2>
+                <p class="currencyMMI" id="currencyMMI"> USD</p>
+                <img src="../img/arrow_down_icon.png" class="ArrowAbout" id="arrow">
+                <img src="../img/arrow_down_icon.png" class="ArrowAbout2" id="arrow2">
+            </div>
+            <div class="dynVariationDIV2">
+                <h2 class="dynVariation"></h2>
+            </div>
+        </div>
+        <div class="eodDate2">
+            <span id="mmiDate"></span>
+        </div>
+        <!-- <div class="btcPriceDiv">
+            <h2 id="btcPrice"></h2>
+            <p class="currencyMMI" style="color: #FF4500;"> BTC</p>
+        </div>
+        <div class="btc_exchange">
+            <span>#CB-SPOT:BTC/USD</span>
+        </div> -->
+        <div class="graphOptions">
+            <div class="xAxesMMI">
+                <button role="button" class="buttonMMIGraph" id="mmiGraph1week">1 semaine</button>
+                <button role="button" class="buttonMMIGraph" id="mmiGraph2weeks">15 jours</button>
+                <button role="button" class="buttonMMIGraph" id="mmiGraph1month">1 mois</button>
+            </div>
+        </div>
+        <div class="mmi">
+            <div class="chart">
+                <canvas id="mmiChart2" width="800" height="300" role="img"></canvas>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            </div>
 </body>
 </html>
