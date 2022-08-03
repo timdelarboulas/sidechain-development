@@ -120,3 +120,77 @@ async function openFiles() {
 }
 
 // SUCCESS
+
+// ----------------------------------------------------------------------------
+// MMI ABOUT PAGE
+
+// Session Table
+// using to get the MMI's data to display on the Session table on the About MMI page.
+// this script is connected with the mmiPriceDisplay.js script, who is already used to format MMI's data from the CSV files
+
+const csvMMIVolatility =
+  "http://127.0.0.1:5500/development/back/mmi/mmi_volatility.csv";
+
+const mmiPriceSessionTable = document.getElementById("mmiPriceSessionTable");
+const mmiYesterdayPriceSessionTable = document.getElementById(
+  "mmiYesterdayPriceSessionTable"
+);
+const mmiVariation5days = document.getElementById("mmiVariation5days");
+const mmiVolatility30days = document.getElementById("mmiVolatility30days");
+const mmiRiskText = document.getElementById("mmiRiskText");
+const mmiMarkToMarket = document.getElementById("mmiMarkToMarket");
+
+const sessionTableDisplay = async () => {
+  await openCSVPrice();
+
+  // get the volatility data from the CSV and format
+  const getVolatilityDataCSV = await fetch(csvMMIVolatility);
+  const csvVolatilityData = await getVolatilityDataCSV.text();
+  const csvVolatilityForm = String(
+    csvVolatilityData.replace(/\r\n|\n|\r/gm, ",")
+  );
+  const csvVolatilityArray = csvVolatilityForm.split(",");
+  // SUCESS
+
+  try {
+    // display MMI Price of the day and of yesterday
+    mmiPriceSessionTable.textContent = mmiPriceArray[0];
+    mmiYesterdayPriceSessionTable.textContent = mmiPriceArray[1];
+
+    // calculation of the variation at 5 days
+    let mmiVariations5days = (
+      (parseFloat(mmiPriceArray[0] - mmiPriceArray[4]) /
+        parseFloat(mmiPriceArray[4])) *
+      100
+    ).toFixed(2);
+
+    if (mmiVariations5days > 0) {
+      mmiVariation5days.textContent = "+" + mmiVariations5days + "%";
+    } else {
+      mmiVariation5days.textContent = "-" + mmiVariations5days + "%";
+    }
+
+    // display Volatility at 30 days
+    let volatilityPercentage = (csvVolatilityArray[1] * 100).toFixed(2);
+    mmiVolatility30days.textContent = volatilityPercentage + "%";
+
+    // display the risk in function of the volatility value
+    if (volatilityPercentage > 0 && volatilityPercentage < 3) {
+      mmiRiskText.textContent = "Très faible";
+    } else if (volatilityPercentage > 3 && volatilityPercentage < 8) {
+      mmiRiskText.textContent = "Faible";
+    } else if (volatilityPercentage > 8 && volatilityPercentage < 15) {
+      mmiRiskText.textContent = "Moyen";
+    } else if (volatilityPercentage > 15 && volatilityPercentage < 22) {
+      mmiRiskText.textContent = "Elevé";
+    } else {
+      mmiRiskText.textContent = "Très élevé";
+    }
+
+    // calculation and display of the Mark-to-Market
+    let m2mCalculation = (mmiPriceArray[0] - 43.4).toFixed(2);
+    mmiMarkToMarket.textContent = m2mCalculation + " USD";
+  } catch {}
+};
+
+sessionTableDisplay();

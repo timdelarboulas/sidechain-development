@@ -1,25 +1,7 @@
 // get the MMI data from the csv files and display on the website
 
-// const csvMMIPrice =
-//   "http://127.0.0.1:5500/development/racine/ressources/csv/mmi_price.csv";
-// const csvMMIDate =
-//   "http://127.0.0.1:5500/development/racine/ressources/csv/mmi_date.csv";
-
-// const csvBTCprice =
-//   "http://127.0.0.1:5500/development/racine/ressources/csv/mmi_btc_price.csv";
-
-// const csvMMIvariations =
-//   "http://127.0.0.1:5500/development/back/mmi/mmi_data.csv";
-
-// const mmiDisplay = document.querySelector(".mmiPrice");
-// const mmiDisplayDate = document.getElementById("mmiDate");
 const arrowDisplayAbout = document.getElementById("arrow");
 const arrowDisplayAbout2 = document.getElementById("arrow2");
-// const navbarPrice = document.getElementById("mmiPriceNavbar");
-// const shareDate = document.getElementById("shareDate");
-// const shareExValue = "OTC";
-// const btcPrice = document.getElementById("btcPrice");
-// const variationsHeader = document.getElementById("mmiVariationsHeader");
 const dynamiqueVAbout = document.querySelector(".dynVariation2");
 
 let mmiPriceArray = []; // array with MMI price
@@ -115,3 +97,28 @@ async function openFiles() {
 }
 
 // SUCCESS
+
+// using to get the MMI's data to display on the Session table on the About MMI page.
+// this script is connected with the mmiPriceDisplay.js script, who is already used to format MMI's data from the CSV files
+
+const mmiPriceSessionTable = document.getElementById("mmiPriceSessionTable");
+const mmiYesterdayPriceSessionTable = document.getElementById(
+  "mmiYesterdayPriceSessionTable"
+);
+const mmiVariation5days = document.getElementById("mmiVariation5days");
+const mmiVolatility30days = document.getElementById("mmiVolatility30days");
+const mmiRiskText = document.getElementById("mmiRiskText");
+const mmiMarkToMarket = document.getElementById("mmiMarkToMarket");
+
+const sessionTableDisplay = async () => {
+  await openCSVPrice();
+  await priceDisplay();
+
+  try{
+      // display MMI Price of the day
+      mmiPriceSessionTable.textContent = mmiPriceArray[0];
+  } catch{}
+
+};
+
+sessionTableDisplay();

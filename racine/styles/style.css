@@ -298,6 +298,65 @@ q {
   text-align: left;
 } 
 
+/*------DETAILS TABLE MMI---------------*/
+
+.AboutMMITables{
+  display: flex;
+  justify-content: space-between; 
+  align-items: stretch;
+  gap: 100px;
+}
+
+table.detailsMMI {
+  box-shadow: 3px 5px 10px #00000088;
+  border-collapse: collapse;
+  border: 1px solid #000000;
+  width: 50%;
+  margin-bottom: 30px;
+}
+
+table.detailsMMI td, table.detailsMMI th {
+  border-left: 2px solid #AAAAAA;
+  padding: 3px 5px;
+}
+
+.detailsMMI tbody > tr:nth-child(even) {
+  background-color: #EEEEEE;
+}
+
+.detailsMMI tbody > tr:hover {background-color: #ddd;}
+
+table.detailsMMI thead {
+  background: #FF8300;
+  background: -moz-linear-gradient(top, #ffa240 0%, #ff8f19 66%, #FF8300 100%);
+  background: -webkit-linear-gradient(top, #ffa240 0%, #ff8f19 66%, #FF8300 100%);
+  background: linear-gradient(to bottom, #ffa240 0%, #ff8f19 66%, #FF8300 100%);
+  border-bottom: 1px solid #000000;
+  font-size: 30px;
+}
+
+table.detailsMMI th {
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+table.detailsMMI tfoot td {
+  font-size: 14px;
+}
+table.detailsMMI tfoot .links {
+  text-align: right;
+}
+table.detailsMMI tfoot .links a{
+  display: inline-block;
+  background: #FF8300;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+/*-------------------------------*/
+
 #mmiTextAbout {
   margin-top: -20px;
   margin-bottom: 40px;

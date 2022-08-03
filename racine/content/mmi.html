@@ -19,6 +19,7 @@
     <script src="../scripts/javascript/navbarScroll.js" defer type="text/javascript"></script>
     <script src="../scripts/javascript/sidechainAnim.js" defer type="text/javascript"></script>
     <script src="../scripts/javascript/mmiPriceDisplay.js" defer type="text/javascript"></script>
+    <!-- <script src="../scripts/javascript/mmiPriceDisplayAboutPage.js" defer type="text/javascript"></script> -->
     <script src="../scripts/javascript/mmiChart2.js" defer type="text/javascript"></script>
 
 </head>
@@ -47,8 +48,87 @@
             <h1 class="mmititle"><strong><span id="letterMMI">M</span>usic <span id="letterMMI">M</span>arket <span id="letterMMI">I</span>ndex<span id="copyright"></span></strong></h1>
         </div>
         <div class="mmiText" id="mmiTextAbout">
-            L'industrie de la musique a une demande sous-jacente massive. La technologie s'installe profondement dans le secteur avec l'arrivée du Metaverse et du Web3, la compétitivité et la multitude d'acteurs s'intensifient et de nouvelles opportunités d'investissement fleurissent.<br>Dans ce contexte, nous avons développer le <strong class="mmiTextEmphasize">Market Music Index</strong>. Le MMI est <strong class="mmiTextEmphasize">l'indice</strong> <strong class="mmiTextEmphasize">boursier</strong>  <span class="mmiTextEmphasize">de référence</span> du secteur musicale. Il est composé des plus importantes valeurs boursières mondiales de l'industrie musicale, selectionnées selon leur implication directe sur le <strong>marché de la musique</strong> (valeurs primaires) et de leur implication indirecte et/ou partielle (valeurs secondaires).
+            Le MMI est <strong class="mmiTextEmphasize">l'indice</strong> <strong class="mmiTextEmphasize">boursier</strong>  <span class="mmiTextEmphasize">de référence</span> du secteur musicale. Il est composé des plus importantes valeurs boursières mondiales de l'industrie musicale, selectionnées en fonction de leur implication directe sur le <strong>marché de la musique</strong> (appelées valeurs primaires) et de leur implication indirecte et/ou partielle (appelées valeurs secondaires). Il est pensé pour les investisseurs, c'est pourquoi toutes les valeurs composant l'indice sont équipondérées.
         </div>
+        <div class="AboutMMITables">
+            <table class="detailsMMI">
+                <thead>
+                    <tr>
+                        <th colspan="2">Détails</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nom</td>
+                        <td>Market Music Index</td>
+                    </tr>
+                    <tr>
+                        <td>Mnémo</td>
+                        <td>MMI World EW (EOD)</td>
+                    </tr>
+                    <tr>
+                        <td>Marché</td>
+                        <td>OTC (non négociable pour le moment)</td>
+                    </tr>
+                    <tr>
+                        <td>Cotation</td>
+                        <td>Fixing</td>
+                    </tr>
+                    <tr>
+                        <td>Cours</td>
+                        <td>Clôture (EOD*)</td>
+                    </tr>
+                    <tr>
+                        <td>Prix</td>
+                        <td>Unique (USD**)</td>
+                    </tr>
+                    <tr>
+                        <td>Intervalle</td>
+                        <td>5j/7 (mardi à samedi) - 00h00 (UTC+0)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="detailsMMI">
+                <thead>
+                    <tr>
+                        <th colspan="2">Séance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cours</td>
+                        <td id="mmiPriceSessionTable"></td>
+                    </tr>
+                    <tr>
+                        <td>Cours en J-1</td>
+                        <td id="mmiYesterdayPriceSessionTable"></td>
+                    </tr>
+                    <tr>
+                        <td>Variation (5 jours)</td>
+                        <td id="mmiVariation5days"></td>
+                    </tr>
+                    <tr>
+                        <td>Volatilité journalière (30 jours)</td>
+                        <td id="mmiVolatility30days"></td>
+                    </tr>
+                    <tr>
+                        <td>Risque (en fonction de la volatilité)</td>
+                        <td id="mmiRiskText"></td>
+                    </tr>
+                    <tr>
+                        <td>Premier jour de cotation le 1er janvier 2022</td>
+                        <td>43.40</td>
+                    </tr>
+                    <tr>
+                        <td>Mark-to-Market***</td>
+                        <td id="mmiMarkToMarket"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>* EOD = End of the Day</p>
+        <p>** Les actions côtés dans une autre devise sont convertis en USD au moment de l'actualisation.</p>
+        <p>*** On suppose l'achat d'une action "MMI" le premier jour de cotation.</p>
         <div class="mmiPriceAboutDIV">
             <div class="mmiPriceDisplayAbout">
                 <h2 class="mmiPrice"></h2>
