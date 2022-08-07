@@ -14,6 +14,7 @@ const csvMMIvariations =
 const mmiDisplay = document.querySelector(".mmiPrice");
 const mmiDisplayDate = document.getElementById("mmiDate");
 const arrowDisplay = document.getElementById("arrow");
+const arrowDisplay2 = document.getElementById("arrow2");
 const navbarPrice = document.getElementById("mmiPriceNavbar");
 const shareDate = document.getElementById("shareDate");
 const shareExValue = "OTC";
@@ -41,6 +42,7 @@ const openCSVPrice = async () => {
       mmiDisplay.classList.add("PriceUp");
       navbarPrice.classList.add("HeaderPriceUp");
       arrowDisplay.style.transform = "rotate(180deg)";
+      arrowDisplay2.style.transform = "rotate(180deg)";
     } else if (parseFloat(csvArrayPrice[0]) < parseFloat(csvArrayPrice[1])) {
       mmiDisplay.classList.add("PriceDown");
       navbarPrice.classList.add("HeaderPriceDown");
@@ -140,6 +142,8 @@ const mmiVolatility30days = document.getElementById("mmiVolatility30days");
 const mmiRiskText = document.getElementById("mmiRiskText");
 const mmiMarkToMarket = document.getElementById("mmiMarkToMarket");
 
+let mmiVolatilityArray = [];
+
 const sessionTableDisplay = async () => {
   await openCSVPrice();
 
@@ -152,9 +156,20 @@ const sessionTableDisplay = async () => {
   const csvVolatilityArray = csvVolatilityForm.split(",");
   // SUCESS
 
+  // stock all the volatility data in an array
+  for (i = 0; i < csvVolatilityArray.length; i++) {
+    mmiVolatilityArray.push(csvVolatilityArray[i]);
+  }
+
+  mmiVolatilityArray.shift();
+  // delete the header of the array.
+  // SUCCESS
+
   try {
-    // display MMI Price of the day and of yesterday
+    // today price
     mmiPriceSessionTable.textContent = mmiPriceArray[0];
+
+    // yesterday price
     mmiYesterdayPriceSessionTable.textContent = mmiPriceArray[1];
 
     // calculation of the variation at 5 days
@@ -164,10 +179,13 @@ const sessionTableDisplay = async () => {
       100
     ).toFixed(2);
 
+    // conditional formatting
     if (mmiVariations5days > 0) {
       mmiVariation5days.textContent = "+" + mmiVariations5days + "%";
+      mmiVariation5days.style.color = "#78B744"; // green
     } else {
       mmiVariation5days.textContent = "-" + mmiVariations5days + "%";
+      mmiVariation5days.style.color = "#FF4500"; // red
     }
 
     // display Volatility at 30 days
@@ -177,20 +195,64 @@ const sessionTableDisplay = async () => {
     // display the risk in function of the volatility value
     if (volatilityPercentage > 0 && volatilityPercentage < 3) {
       mmiRiskText.textContent = "Très faible";
+      mmiRiskText.style.color = "#78B744"; // green
     } else if (volatilityPercentage > 3 && volatilityPercentage < 8) {
       mmiRiskText.textContent = "Faible";
+      mmiRiskText.style.color = "#78B744"; // green
     } else if (volatilityPercentage > 8 && volatilityPercentage < 15) {
       mmiRiskText.textContent = "Moyen";
+      mmiRiskText.style.color = "#FF8300"; // orange
     } else if (volatilityPercentage > 15 && volatilityPercentage < 22) {
       mmiRiskText.textContent = "Elevé";
+      mmiRiskText.style.color = "#FF4500"; // red
     } else {
       mmiRiskText.textContent = "Très élevé";
+      mmiRiskText.style.color = "#FF4500"; // red
     }
 
     // calculation and display of the Mark-to-Market
     let m2mCalculation = (mmiPriceArray[0] - 43.4).toFixed(2);
-    mmiMarkToMarket.textContent = m2mCalculation + " USD";
-  } catch {}
+
+    if (m2mCalculation > 0) {
+      mmiMarkToMarket.textContent = m2mCalculation;
+      mmiMarkToMarket.style.color = "#78B744"; // green
+    } else {
+      mmiMarkToMarket.textContent = m2mCalculation;
+      mmiMarkToMarket.style.color = "#FF4500"; // red
+    }
+  } catch {
+    console.error(error);
+  }
 };
 
 sessionTableDisplay();
+
+const csvMovingAverage =
+  "http://127.0.0.1:5500/development/back/mmi/mmi_ma.csv";
+
+let movingAverage20Array = [];
+let movingAverage30Array = [];
+let movingAverage50Array = [];
+
+const csvMAfetch = async () => {
+  const getMADataCSV = await fetch(csvMovingAverage);
+  const csvMAData = await getMADataCSV.text();
+  const csvMADataForm = String(csvMAData.replace(/\r\n|\n|\r/gm, ","));
+  const movingAverageData = csvMADataForm.split(",");
+  movingAverageData.splice(0, 3);
+
+  // get an array with the MA 20 column
+  for (i = 0; i < movingAverageData.length; i += 3) {
+    movingAverage20Array.push(movingAverageData[i]);
+  }
+
+  // get an array with the MA 30 column
+  for (i = 1; i < movingAverageData.length; i += 3) {
+    movingAverage30Array.push(movingAverageData[i]);
+  }
+
+  // get an array with the MA 50 column
+  for (i = 2; i < movingAverageData.length; i += 3) {
+    movingAverage50Array.push(movingAverageData[i]);
+  }
+};

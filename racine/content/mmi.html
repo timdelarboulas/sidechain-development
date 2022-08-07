@@ -126,9 +126,11 @@
                 </tbody>
             </table>
         </div>
-        <p>* EOD = End of the Day</p>
-        <p>** Les actions côtés dans une autre devise sont convertis en USD au moment de l'actualisation.</p>
-        <p>*** On suppose l'achat d'une action "MMI" le premier jour de cotation.</p>
+        <div class="asteriscDIVAboutMMI">
+            <p id="asteriscAboutMMI">* EOD = End of the Day</p>
+            <p id="asteriscAboutMMI">** Toutes les actions côtés dans une autre devise sont convertis en USD au moment de l'actualisation.</p>
+            <p id="asteriscAboutMMI">*** On suppose l'achat d'un sous-jacent réplicant le MMI dès le premier jour de sa cotation.</p>
+        </div>
         <div class="mmiPriceAboutDIV">
             <div class="mmiPriceDisplayAbout">
                 <h2 class="mmiPrice"></h2>
@@ -152,15 +154,21 @@
         </div> -->
         <div class="graphOptions">
             <div class="xAxesMMI">
-                <button role="button" class="buttonMMIGraph" id="mmiGraph1week">1 semaine</button>
-                <button role="button" class="buttonMMIGraph" id="mmiGraph2weeks">15 jours</button>
-                <button role="button" class="buttonMMIGraph" id="mmiGraph1month">1 mois</button>
+                <button role="button" class="buttonMMIGraph" id="mmiAboutGraph1week">1 semaine</button>
+                <button role="button" class="buttonMMIGraph" id="mmiAboutGraph2weeks">15 jours</button>
+                <button role="button" class="buttonMMIGraph" id="mmiAboutGraph1month">1 mois</button>
+                <button role="button" class="buttonMMIGraph" id="mmiMA20">MM 20</button>
             </div>
         </div>
-        <div class="mmi">
+        <div>
             <div class="chart">
                 <canvas id="mmiChart2" width="800" height="300" role="img"></canvas>
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             </div>
+            <div class="volatilityChart">
+                <canvas id="mmiChartVolatility" width="800" height="300" role="img"></canvas>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            </div>
+        </div>
 </body>
 </html>

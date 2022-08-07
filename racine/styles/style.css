@@ -33,7 +33,7 @@ p {
 }
 
 .orangeLink {
-  color: #FF8300;
+  color: #ff8400;
 }
 
 /*************HEADER***************/
@@ -354,6 +354,17 @@ table.detailsMMI tfoot .links a{
   padding: 2px 8px;
   border-radius: 5px;
 }
+.asteriscDIVAboutMMI{
+  display: flex;
+  align-items: stretch;
+  gap: 8%;
+}
+
+#asteriscAboutMMI{
+  font-size: 12px;
+  font-style: italic;
+  display: inline-block;
+}
 
 /*-------------------------------*/
 
@@ -651,7 +662,6 @@ td {
   height: 25px;
   margin-top: 2px;
   margin-left: -25px;
-  transform: rotate(180deg);
 }
 
 .PriceUp {
@@ -701,6 +711,12 @@ td {
 
 .chart {
   margin-bottom: 15px;
+}
+
+/*----------------MMI GRAPH ABOUT PAGE------------------*/
+
+.volatilityChart{
+  height: 150px;
 }
 
 /*--------------------------*/
