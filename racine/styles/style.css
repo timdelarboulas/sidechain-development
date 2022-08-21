@@ -519,9 +519,21 @@ td {
 /* button graph data */
 
 .xAxesMMI {
-  display: flex;
   margin-left: 40px;
   margin-bottom: 5px;
+}
+
+.xAxesMMIAbout {
+  margin-left: 40px;
+  margin-bottom: 5px;
+  width: 100%;
+
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: normal;
+  align-content: normal;
 }
 
 .buttonMMIGraph {
@@ -536,12 +548,11 @@ td {
   box-sizing: border-box;
   color: #3c4043;
   cursor: pointer;
-  display: inline-flex;
+  display: inline-block;
   fill: currentcolor;
   font-size: 14px;
   font-weight: 500;
   height: 30px;
-  justify-content: center;
   padding: 5px 15px;
   text-align: center;
   text-transform: none;
@@ -587,6 +598,28 @@ td {
 
 .buttonMMIGraph:disabled {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.LeftButtons {
+  margin: 0; 
+  padding: 0; 
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+
+.RightButtons{
+  margin: 0; 
+  padding: 0; 
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
 }
 
 /* button finish */
@@ -727,6 +760,15 @@ td {
 
 #MMILink{
   color: #000000;
+}
+
+#AboutLink{
+  color: #000000;
+  text-decoration: none;
+}
+
+#AboutLink:hover {
+  color: #ff8300;
 }
 
 .mmiText {

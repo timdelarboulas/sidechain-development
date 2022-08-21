@@ -48,7 +48,7 @@ const openCSVPrice = async () => {
       navbarPrice.classList.add("HeaderPriceDown");
     }
 
-    for (i = 0; i < 29; i++) {
+    for (i = 0; i < csvArrayPrice.length; i++) {
       mmiPriceArray.push(csvArrayPrice[i]);
     } // add the lastest MMI price from the csv file
 
@@ -101,7 +101,7 @@ const openCSVDate = async () => {
 
   mmiDisplayDate.textContent = csvArrayDate[0] + " (#" + shareExValue + ")";
 
-  for (i = 0; i < 29; i++) {
+  for (i = 0; i < csvArrayDate.length; i++) {
     mmiDateArray.push(csvArrayDate[i]);
   } // add the lastest dates from the csv file
 };
@@ -184,7 +184,7 @@ const sessionTableDisplay = async () => {
       mmiVariation5days.textContent = "+" + mmiVariations5days + "%";
       mmiVariation5days.style.color = "#78B744"; // green
     } else {
-      mmiVariation5days.textContent = "-" + mmiVariations5days + "%";
+      mmiVariation5days.textContent = mmiVariations5days + "%";
       mmiVariation5days.style.color = "#FF4500"; // red
     }
 
@@ -239,7 +239,7 @@ const csvMAfetch = async () => {
   const csvMAData = await getMADataCSV.text();
   const csvMADataForm = String(csvMAData.replace(/\r\n|\n|\r/gm, ","));
   const movingAverageData = csvMADataForm.split(",");
-  movingAverageData.splice(0, 3);
+  movingAverageData.splice(0, 3); 
 
   // get an array with the MA 20 column
   for (i = 0; i < movingAverageData.length; i += 3) {

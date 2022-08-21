@@ -14,7 +14,7 @@ async function mmiChart() {
   await openFiles();
 
   maxValue = Math.round(Math.max(...mmiPriceArray)); // get the max value from the array of the MMI's Price
-  mmiScalesYMax = Math.round(maxValue / 10) * 10 + 20; // convert maxValue to the nearest multiple of 10 and add a number for more space
+  mmiScalesYMax = Math.round(maxValue / 10) * 10 + 10; // convert maxValue to the nearest multiple of 10 and add a number for more space
   // this permit to have a dynamique max value for the Y axe
 
   const ctx = document.getElementById("mmiChart").getContext("2d");
@@ -25,6 +25,40 @@ async function mmiChart() {
         {
           label: "Cours",
           data: [
+            { x: mmiDateArray[62], y: mmiPriceArray[62] },
+            { x: mmiDateArray[61], y: mmiPriceArray[61] },
+            { x: mmiDateArray[60], y: mmiPriceArray[60] },
+            { x: mmiDateArray[59], y: mmiPriceArray[59] },
+            { x: mmiDateArray[58], y: mmiPriceArray[58] },
+            { x: mmiDateArray[57], y: mmiPriceArray[57] },
+            { x: mmiDateArray[56], y: mmiPriceArray[56] },
+            { x: mmiDateArray[55], y: mmiPriceArray[55] },
+            { x: mmiDateArray[54], y: mmiPriceArray[54] },
+            { x: mmiDateArray[53], y: mmiPriceArray[53] },
+            { x: mmiDateArray[52], y: mmiPriceArray[52] },
+            { x: mmiDateArray[51], y: mmiPriceArray[51] },
+            { x: mmiDateArray[50], y: mmiPriceArray[50] },
+            { x: mmiDateArray[49], y: mmiPriceArray[49] },
+            { x: mmiDateArray[48], y: mmiPriceArray[48] },
+            { x: mmiDateArray[47], y: mmiPriceArray[47] },
+            { x: mmiDateArray[46], y: mmiPriceArray[46] },
+            { x: mmiDateArray[45], y: mmiPriceArray[45] },
+            { x: mmiDateArray[44], y: mmiPriceArray[44] },
+            { x: mmiDateArray[43], y: mmiPriceArray[43] },
+            { x: mmiDateArray[42], y: mmiPriceArray[42] },
+            { x: mmiDateArray[41], y: mmiPriceArray[41] },
+            { x: mmiDateArray[40], y: mmiPriceArray[40] },
+            { x: mmiDateArray[39], y: mmiPriceArray[39] },
+            { x: mmiDateArray[38], y: mmiPriceArray[38] },
+            { x: mmiDateArray[37], y: mmiPriceArray[37] },
+            { x: mmiDateArray[36], y: mmiPriceArray[36] },
+            { x: mmiDateArray[35], y: mmiPriceArray[35] },
+            { x: mmiDateArray[34], y: mmiPriceArray[34] },
+            { x: mmiDateArray[33], y: mmiPriceArray[33] },
+            { x: mmiDateArray[32], y: mmiPriceArray[32] },
+            { x: mmiDateArray[31], y: mmiPriceArray[31] },
+            { x: mmiDateArray[30], y: mmiPriceArray[30] },
+            { x: mmiDateArray[29], y: mmiPriceArray[29] },
             { x: mmiDateArray[28], y: mmiPriceArray[28] },
             { x: mmiDateArray[27], y: mmiPriceArray[27] },
             { x: mmiDateArray[26], y: mmiPriceArray[26] },
@@ -91,7 +125,7 @@ async function mmiChart() {
           },
           ticks: {
             autoSkip: true,
-            maxTicksLimit: 5,
+            maxTicksLimit: 6,
             beginAtZero: true,
             maxRotation: 0,
             minRotation: 0,
