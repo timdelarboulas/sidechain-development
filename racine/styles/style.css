@@ -385,6 +385,19 @@ table.detailsMMI tfoot .links a{
   Green #78b744
 */
 
+.compositionTitle {
+  margin-top: 120px;
+  font-size: 40px;
+}
+
+.compositionLetter{
+  color: #FF8300;
+}
+
+.compositionText {
+  margin-bottom: -20px;
+}
+
 .primaryValuesInfo{
   width: 100%;
   margin-top: 20px;
@@ -395,7 +408,16 @@ table.detailsMMI tfoot .links a{
   border: 1px solid #000000;
 }
 
+.UMGbold {
+  font-weight: bold;
+}
+
 #tableMMI {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tableMMI2 {
   border-collapse: collapse;
   width: 100%;
 }
@@ -405,14 +427,26 @@ table.detailsMMI tfoot .links a{
   color: #ffffff;
 }
 
+#tableMMI2 th {
+  background-color: #FF8300;
+  color: #ffffff;
+}
+
 #tableMMI td, #tableMMI th {
   border: 1px solid #ddd;
   padding: 5px;
 }
 
+#tableMMI2 td, #tableMMI2 th {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
 #tableMMI tr:nth-child(even) {background-color: #f2f2f2;}
+#tableMMI2 tr:nth-child(even) {background-color: #f2f2f2;}
 
 #tableMMI tr:hover {background-color: #ddd;}
+#tableMMI2 tr:hover {background-color: #ddd;}
 
 th {
   text-align: left;
@@ -424,6 +458,12 @@ td {
   text-align: left;
   margin: 0;
   padding: 0;
+}
+
+.exposantTable {
+  margin-top: 15px;
+  font-size: 14px;
+  font-style: italic;
 }
 
 /*------------SPOTIFY FOOTER---------------*/
@@ -750,6 +790,7 @@ td {
 
 .volatilityChart{
   height: 150px;
+  margin-bottom: 40px;
 }
 
 /*--------------------------*/

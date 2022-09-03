@@ -172,7 +172,7 @@ async function mmiChart2() {
     maxValue = Math.round(Math.max(...mmiVolatilityArray)); // get the max value from the array of the MMI's Price
     minValue = Math.round(Math.min(...mmiVolatilityArray)); // get the min
     mmiScalesYMax = Math.round(maxValue / 10) * 10 + 3; // convert maxValue to the nearest multiple of 10 and add a number for more space
-    mmiScalesYMin = Math.round(minValue / 10) * 10 + 2; // same that mmiScalesYMax
+    mmiScalesYMin = Math.round(minValue / 10) * 10 + 1; // same that mmiScalesYMax
     // this permit to have a dynamique max and min value for the Y axe
 
     const ctxVolatility = document

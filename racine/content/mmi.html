@@ -1,180 +1,345 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Market Music Index</title>
 
     <!--styles-->
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
+      rel="stylesheet"
+    />
 
     <!--scripts-->
-    <script src="../scripts/javascript/errorText.js" defer type="text/javascript"></script>
-    <script src="../scripts/javascript/navbarScroll.js" defer type="text/javascript"></script>
-    <script src="../scripts/javascript/sidechainAnim.js" defer type="text/javascript"></script>
-    <script src="../scripts/javascript/mmiPriceDisplay.js" defer type="text/javascript"></script>
+    <script
+      src="../scripts/javascript/errorText.js"
+      defer
+      type="text/javascript"
+    ></script>
+    <script
+      src="../scripts/javascript/navbarScroll.js"
+      defer
+      type="text/javascript"
+    ></script>
+    <script
+      src="../scripts/javascript/sidechainAnim.js"
+      defer
+      type="text/javascript"
+    ></script>
+    <script
+      src="../scripts/javascript/mmiPriceDisplay.js"
+      defer
+      type="text/javascript"
+    ></script>
     <!-- <script src="../scripts/javascript/mmiPriceDisplayAboutPage.js" defer type="text/javascript"></script> -->
-    <script src="../scripts/javascript/mmiChart2.js" defer type="text/javascript"></script>
-
-</head>
-<body>
+    <script
+      src="../scripts/javascript/mmiChart2.js"
+      defer
+      type="text/javascript"
+    ></script>
+    <script
+      src="../scripts/javascript/mmiTableValues.js"
+      defer
+      type="text/javascript"
+    ></script>
+  </head>
+  <body>
     <header>
-        <nav class="header">
-            <ul>
-                <li class="titlewebsite" id="cursor"></li>
-                <li class="MMIHeader"><a href ="../home.html" target="_self" rel="noopener noreferrer" id="MMIheader">Accueil</a></li>
-                <li class="share" id="menu"><a href="https://opensea.io/collection/music" target="_blank" rel="noopener noreferrer" id="mnftHeader">M-NFTs</a></li>
-                <li class="share" id="news"><a href="" target="_blank" rel="noopener noreferrer" id="newsLink">News</a></li>
-            </ul>
-        </nav>
+      <nav class="header">
+        <ul>
+          <li class="titlewebsite" id="cursor"></li>
+          <li class="MMIHeader">
+            <a
+              href="../home.html"
+              target="_self"
+              rel="noopener noreferrer"
+              id="MMIheader"
+              >Accueil</a
+            >
+          </li>
+          <li class="share" id="menu">
+            <a
+              href="https://opensea.io/collection/music"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="mnftHeader"
+              >M-NFTs</a
+            >
+          </li>
+          <li class="share" id="news">
+            <a href="" target="_blank" rel="noopener noreferrer" id="newsLink"
+              >News</a
+            >
+          </li>
+        </ul>
+      </nav>
     </header>
     <nav id="navbar">
-        <ul>
-            <li class="titlewebsite2"><a href="../home.html">Sidechain</a></li>
-            <li class="share" id="MMInavbarTitle"><span id="letterMMIHeader">M</span>usic <span id="letterMMIHeader"> M</span>arket <span id="letterMMIHeader"> I</span>ndex<span id="copyrightHeader">&#xA9;</span></li>
-            <li class="share" id="mmiPriceNavbar"></li>
-            <li class="share" id="mmiVariationsHeader"></li>
-        </ul>
+      <ul>
+        <li class="titlewebsite2"><a href="../home.html">Sidechain</a></li>
+        <li class="share" id="MMInavbarTitle">
+          <span id="letterMMIHeader">M</span>usic
+          <span id="letterMMIHeader"> M</span>arket
+          <span id="letterMMIHeader"> I</span>ndex<span id="copyrightHeader"
+            >&#xA9;</span
+          >
+        </li>
+        <li class="share" id="mmiPriceNavbar"></li>
+        <li class="share" id="mmiVariationsHeader"></li>
+      </ul>
     </nav>
-    
+
     <div class="body">
-        <div class="aboutMMI">
-            <h1 class="mmititle"><strong><span id="letterMMI">M</span>usic <span id="letterMMI">M</span>arket <span id="letterMMI">I</span>ndex<span id="copyright"></span></strong></h1>
+      <div class="aboutMMI">
+        <h1 class="mmititle">
+          <strong
+            ><span id="letterMMI">M</span>usic
+            <span id="letterMMI">M</span>arket
+            <span id="letterMMI">I</span>ndex<span id="copyright"></span
+          ></strong>
+        </h1>
+      </div>
+      <div class="mmiText" id="mmiTextAbout">
+        Le MMI est <strong class="mmiTextEmphasize">l'indice</strong>
+        <strong class="mmiTextEmphasize">boursier</strong>
+        <span class="mmiTextEmphasize">de référence</span> du secteur musicale.
+        Il est composé des plus importantes valeurs boursières mondiales de
+        l'industrie musicale, selectionnées en fonction de leur implication
+        directe sur le <strong>marché de la musique</strong> (appelées valeurs
+        primaires) et de leur implication indirecte et/ou partielle (appelées
+        valeurs secondaires). Il est pensé pour les investisseurs, c'est
+        pourquoi toutes les valeurs composant l'indice sont équipondérées.
+      </div>
+      <div class="AboutMMITables">
+        <table class="detailsMMI">
+          <thead>
+            <tr>
+              <th colspan="2">Détails</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nom</td>
+              <td>Market Music Index</td>
+            </tr>
+            <tr>
+              <td>Mnémo</td>
+              <td>MMI World EW (EOD)</td>
+            </tr>
+            <tr>
+              <td>Marché</td>
+              <td>OTC (non négociable pour le moment)</td>
+            </tr>
+            <tr>
+              <td>Cotation</td>
+              <td>Fixing</td>
+            </tr>
+            <tr>
+              <td>Cours</td>
+              <td>Clôture (EOD*)</td>
+            </tr>
+            <tr>
+              <td>Prix</td>
+              <td>Unique (USD**)</td>
+            </tr>
+            <tr>
+              <td>Intervalle</td>
+              <td>5j/7 (mardi à samedi) - 00h00 (UTC+0)</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="detailsMMI">
+          <thead>
+            <tr>
+              <th colspan="2">Séance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cours</td>
+              <td id="mmiPriceSessionTable"></td>
+            </tr>
+            <tr>
+              <td>Cours en J-1</td>
+              <td id="mmiYesterdayPriceSessionTable"></td>
+            </tr>
+            <tr>
+              <td>Variation (5 jours)</td>
+              <td id="mmiVariation5days"></td>
+            </tr>
+            <tr>
+              <td>Volatilité journalière (30 jours)</td>
+              <td id="mmiVolatility30days"></td>
+            </tr>
+            <tr>
+              <td>Risque (en fonction de la volatilité)</td>
+              <td id="mmiRiskText"></td>
+            </tr>
+            <tr>
+              <td>Premier jour de cotation (01/01/2022)</td>
+              <td>43.40</td>
+            </tr>
+            <tr>
+              <td>Mark-to-Market***</td>
+              <td id="mmiMarkToMarket"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="asteriscDIVAboutMMI">
+        <p id="asteriscAboutMMI">* EOD = End of the Day</p>
+        <p id="asteriscAboutMMI">
+          ** Toutes les actions côtés dans une autre devise sont convertis en
+          USD au moment de l'actualisation.
+        </p>
+        <p id="asteriscAboutMMI">
+          *** On suppose l'achat d'un sous-jacent réplicant le MMI dès le
+          premier jour de sa cotation.
+        </p>
+      </div>
+      <div class="mmiPriceAboutDIV">
+        <div class="mmiPriceDisplayAbout">
+          <h2 class="mmiPrice"></h2>
+          <p class="currencyMMI" id="currencyMMI">USD</p>
+          <img src="../img/arrow_down_icon.png" class="ArrowAbout" id="arrow" />
+          <img
+            src="../img/arrow_down_icon.png"
+            class="ArrowAbout2"
+            id="arrow2"
+          />
         </div>
-        <div class="mmiText" id="mmiTextAbout">
-            Le MMI est <strong class="mmiTextEmphasize">l'indice</strong> <strong class="mmiTextEmphasize">boursier</strong>  <span class="mmiTextEmphasize">de référence</span> du secteur musicale. Il est composé des plus importantes valeurs boursières mondiales de l'industrie musicale, selectionnées en fonction de leur implication directe sur le <strong>marché de la musique</strong> (appelées valeurs primaires) et de leur implication indirecte et/ou partielle (appelées valeurs secondaires). Il est pensé pour les investisseurs, c'est pourquoi toutes les valeurs composant l'indice sont équipondérées.
+        <div class="dynVariationDIV2">
+          <h2 class="dynVariation"></h2>
         </div>
-        <div class="AboutMMITables">
-            <table class="detailsMMI">
-                <thead>
-                    <tr>
-                        <th colspan="2">Détails</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Nom</td>
-                        <td>Market Music Index</td>
-                    </tr>
-                    <tr>
-                        <td>Mnémo</td>
-                        <td>MMI World EW (EOD)</td>
-                    </tr>
-                    <tr>
-                        <td>Marché</td>
-                        <td>OTC (non négociable pour le moment)</td>
-                    </tr>
-                    <tr>
-                        <td>Cotation</td>
-                        <td>Fixing</td>
-                    </tr>
-                    <tr>
-                        <td>Cours</td>
-                        <td>Clôture (EOD*)</td>
-                    </tr>
-                    <tr>
-                        <td>Prix</td>
-                        <td>Unique (USD**)</td>
-                    </tr>
-                    <tr>
-                        <td>Intervalle</td>
-                        <td>5j/7 (mardi à samedi) - 00h00 (UTC+0)</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="detailsMMI">
-                <thead>
-                    <tr>
-                        <th colspan="2">Séance</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Cours</td>
-                        <td id="mmiPriceSessionTable"></td>
-                    </tr>
-                    <tr>
-                        <td>Cours en J-1</td>
-                        <td id="mmiYesterdayPriceSessionTable"></td>
-                    </tr>
-                    <tr>
-                        <td>Variation (5 jours)</td>
-                        <td id="mmiVariation5days"></td>
-                    </tr>
-                    <tr>
-                        <td>Volatilité journalière (30 jours)</td>
-                        <td id="mmiVolatility30days"></td>
-                    </tr>
-                    <tr>
-                        <td>Risque (en fonction de la volatilité)</td>
-                        <td id="mmiRiskText"></td>
-                    </tr>
-                    <tr>
-                        <td>Premier jour de cotation (01/01/2022)</td>
-                        <td>43.40</td>
-                    </tr>
-                    <tr>
-                        <td>Mark-to-Market***</td>
-                        <td id="mmiMarkToMarket"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="asteriscDIVAboutMMI">
-            <p id="asteriscAboutMMI">* EOD = End of the Day</p>
-            <p id="asteriscAboutMMI">** Toutes les actions côtés dans une autre devise sont convertis en USD au moment de l'actualisation.</p>
-            <p id="asteriscAboutMMI">*** On suppose l'achat d'un sous-jacent réplicant le MMI dès le premier jour de sa cotation.</p>
-        </div>
-        <div class="mmiPriceAboutDIV">
-            <div class="mmiPriceDisplayAbout">
-                <h2 class="mmiPrice"></h2>
-                <p class="currencyMMI" id="currencyMMI"> USD</p>
-                <img src="../img/arrow_down_icon.png" class="ArrowAbout" id="arrow">
-                <img src="../img/arrow_down_icon.png" class="ArrowAbout2" id="arrow2">
-            </div>
-            <div class="dynVariationDIV2">
-                <h2 class="dynVariation"></h2>
-            </div>
-        </div>
-        <div class="eodDate2">
-            <span id="mmiDate"></span>
-        </div>
-        <!-- <div class="btcPriceDiv">
+      </div>
+      <div class="eodDate2">
+        <span id="mmiDate"></span>
+      </div>
+      <!-- <div class="btcPriceDiv">
             <h2 id="btcPrice"></h2>
             <p class="currencyMMI" style="color: #FF4500;"> BTC</p>
         </div>
         <div class="btc_exchange">
             <span>#CB-SPOT:BTC/USD</span>
         </div> -->
-        <div class="graphOptions">
-            <div class="xAxesMMIAbout">
-                <div class="LeftButtons">
-                    <button role="button" class="buttonMMIGraph" id="mmiAboutGraph1week">1 semaine</button>
-                    <button role="button" class="buttonMMIGraph" id="mmiAboutGraph2weeks">15 jours</button>
-                    <button role="button" class="buttonMMIGraph" id="mmiAboutGraph1month">1 mois</button>
-                </div>
-                <div class="RightButtons">
-                    <button role="button" class="buttonMMIGraph" id="mmiMA20">MM 20</button>
-                    <button role="button" class="buttonMMIGraph" id="mmiMA30">MM 30</button>
-                    <button role="button" class="buttonMMIGraph" id="mmiMA50">MM 50</button>
-                </div>
-            </div>
+      <div class="graphOptions">
+        <div class="xAxesMMIAbout">
+          <div class="LeftButtons">
+            <button
+              role="button"
+              class="buttonMMIGraph"
+              id="mmiAboutGraph1week"
+            >
+              1 semaine
+            </button>
+            <button
+              role="button"
+              class="buttonMMIGraph"
+              id="mmiAboutGraph2weeks"
+            >
+              15 jours
+            </button>
+            <button
+              role="button"
+              class="buttonMMIGraph"
+              id="mmiAboutGraph1month"
+            >
+              1 mois
+            </button>
+          </div>
+          <div>
+            <select name="var" id="varSelect">
+              <option value="var1">VAR 1</option>
+              <option value="var2">VAR 1</option>
+              <option value="var3">VAR 1</option>
+            </select>
+            <span>2%</span>
+          </div>
+          <div class="RightButtons">
+            <button role="button" class="buttonMMIGraph" id="mmiMA20">
+              MM 20
+            </button>
+            <button role="button" class="buttonMMIGraph" id="mmiMA30">
+              MM 30
+            </button>
+            <button role="button" class="buttonMMIGraph" id="mmiMA50">
+              MM 50
+            </button>
+          </div>
         </div>
-        <div>
-            <div class="chart">
-                <canvas id="mmiChart2" width="800" height="300" role="img"></canvas>
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            </div>
-            <div class="volatilityChart">
-                <canvas id="mmiChartVolatility" width="800" height="300" role="img"></canvas>
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            </div>
+      </div>
+      <div>
+        <div class="chart">
+          <canvas id="mmiChart2" width="800" height="300" role="img"></canvas>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         </div>
-</body>
+        <div class="volatilityChart">
+          <canvas
+            id="mmiChartVolatility"
+            width="800"
+            height="300"
+            role="img"
+          ></canvas>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        </div>
+      </div>
+      <h1 class="compositionTitle">
+        <span class="compositionLetter">Compo</span>sition
+      </h1>
+      <p class="compositionText">
+        Le MMI est composé de 10 valeurs primaires équipondérées et de 6 valeurs
+        secondaires pondérées en fonction de leur pourcentage d'activité dans le
+        secteur musicale. De cette manière, l'indice rend compte de l'ensemble
+        des acteurs boursiers intervenant directement ou indirectement sur le
+        marché mondiale de la musique.
+      </p>
+      <h3 class="primaryValues">Valeurs Primaires</h3>
+      <p>
+        Avec
+        <span class="UMGbold"
+          ><strong class="UMGbold">Universal Music Group</strong> (UMG)</span
+        >
+        en chef d'orchestre, les valeurs primaires sont composées des plus
+        grands labels de musique au monde, de plateforme de streaming, de groupe
+        de radio et d'organisation de concert ainsi que de fabricant de matériel
+        d'écoute (enceintes, caissons de basse, etc.) ou encore de service
+        d'accompagnement des artistes.
+      </p>
+      <table align="center" class="primaryValuesInfo" id="tableMMI"></table>
+      <p class="exposantTable">
+        &#185; Les cours qui ne sont pas cotés en dollar américain (USD), tel
+        que UMG, sont convertis au dernier cours d'achat du dollar, disponible
+        sur le Forex au moment de l'actualisation des prix (00:00 UTC+0 du mardi
+        au samedi).
+      </p>
+      <h3 class="primaryValues">Valeurs Secondaires</h3>
+      <p>
+        Principalement grâce a leur plateforme de streaming, ces géants
+        internationaux de la "tech", composant ainsi les valeurs secondaires du
+        MMI, investissent massivement dans les services musicaux pour profiter
+        de ce gigantesque marché en pleine transformation numérique.
+      </p>
+      <table align="center" class="secondaryValuesInfo" id="tableMMI2"></table>
+      <p class="exposantTable">
+        &#178; Les coefficients de pondération sont déterminés à partir des
+        rapports financier annuels des entreprises et des informations diffusées
+        dans la presse spécialisée. Grâce à son service Apple Music, le géant
+        californien a 8,70% de son activité impliqué sur le marché mondial de la
+        musique en 2021.
+      </p>
+    </div>
+  </body>
 </html>
