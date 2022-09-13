@@ -5,7 +5,7 @@ import pandas as pd
 import math
 import csv
 
-# file
+# files
 mmi_global_data = r"C:\Users\delar\Desktop\sidechain\development\back\mmi\mmi_data.csv"
 export_volatility = r"C:\Users\delar\Desktop\sidechain\development\back\mmi\mmi_volatility.csv"
 export_ma = r"C:\Users\delar\Desktop\sidechain\development\back\mmi\mmi_ma.csv"

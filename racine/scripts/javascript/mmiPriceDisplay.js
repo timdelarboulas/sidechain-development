@@ -239,7 +239,7 @@ const csvMAfetch = async () => {
   const csvMAData = await getMADataCSV.text();
   const csvMADataForm = String(csvMAData.replace(/\r\n|\n|\r/gm, ","));
   const movingAverageData = csvMADataForm.split(",");
-  movingAverageData.splice(0, 3); 
+  movingAverageData.splice(0, 3);
 
   // get an array with the MA 20 column
   for (i = 0; i < movingAverageData.length; i += 3) {
@@ -256,3 +256,38 @@ const csvMAfetch = async () => {
     movingAverage50Array.push(movingAverageData[i]);
   }
 };
+
+// -------------------------------
+
+// display of VaR value according to the type of VaR chosen
+const csvVaR = "http://127.0.0.1:5500/development/back/mmi/mmi_var.csv";
+const varSelection = document.getElementById("varSelect");
+const varHistorical = document.getElementById("varH");
+const varDisplay = document.getElementById("varResult");
+
+const csvVARfetch = async () => {
+  try {
+    const getVARdataCSV = await fetch(csvVaR);
+    const csvVARdata = await getVARdataCSV.text();
+    const csvVARdataForm = String(csvVARdata.replace(/\r\n|\n|\r/gm, ","));
+    const varData = csvVARdataForm.split(",");
+    varData.splice(0, 4); // delete header index
+
+    // display VaR
+    varDisplay.textContent =
+      parseFloat(varData[0]) + "%, " + parseFloat(varData[1]) + "$.";
+
+    varSelection.addEventListener("change", (e) => {
+      if (e.target.value == "var1") {
+        varDisplay.textContent =
+          parseFloat(varData[0]) + "%, " + parseFloat(varData[1]) + "$.";
+      } else if (e.target.value == "var2") {
+        varDisplay.textContent = "en production";
+      }
+    });
+  } catch {
+    varDisplay.textContent = "N/A";
+  }
+};
+
+csvVARfetch();

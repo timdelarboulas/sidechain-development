@@ -262,11 +262,10 @@
           </div>
           <div>
             <select name="var" id="varSelect">
-              <option value="var1">VAR 1</option>
-              <option value="var2">VAR 1</option>
-              <option value="var3">VAR 1</option>
+              <option value="var1" id="varH">VaR-H (95%,10 jours)</option>
+              <option value="var2">VaR-Pa (5%) 1 mois</option>
             </select>
-            <span>2%</span>
+            <span id="varResult"></span>
           </div>
           <div class="RightButtons">
             <button role="button" class="buttonMMIGraph" id="mmiMA20">
@@ -308,8 +307,7 @@
       </p>
       <h3 class="primaryValues">Valeurs Primaires</h3>
       <p>
-        Avec
-        <span class="UMGbold"
+        Avec<span class="UMGbold"
           ><strong class="UMGbold">Universal Music Group</strong> (UMG)</span
         >
         en chef d'orchestre, les valeurs primaires sont composées des plus
