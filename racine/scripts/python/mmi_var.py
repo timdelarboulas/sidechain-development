@@ -33,17 +33,20 @@ print(mean_price_for_100_days)
 
 # sort PnL in ascending order
 one_month_pnl.sort()
+
 # get the first 5 PnL values
 var_historical_5_worst_results = one_month_pnl[0:5]
-# get the historical VaR 95% over 10 days
+
+# get the maximum 1-day loss percentage, based on an average of the last 100 trading days, with a confidence index of 95%.
 var_historical_percentage = round(((
     (var_historical_5_worst_results[4] / mean_price_for_100_days)*100)*-1), 2)
-# get the maximum 1-day loss percentage, based on an average of the last 100 trading days, with a confidence index of 95%.
+
+# get the historical VaR 95% over 10 days
 var_historical_n = 10  # days
 var_historical_95_10 = round(
     ((var_historical_5_worst_results[4] * math.sqrt(var_historical_n)) * -1), 2)
 print(
-    f"perte maximale sur 1 jours: {var_historical_percentage}% ; Perte maximale théorique sur 10 jours: {var_historical_95_10}$")
+    f"Perte maximale théorique sur 1 jours: {var_historical_percentage}% ; Perte maximale théorique sur 10 jours: {var_historical_95_10}$")
 
 # SUCCESS
 # -------

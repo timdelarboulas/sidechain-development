@@ -21,8 +21,11 @@ async function mmiChart2() {
     data: {
       datasets: [
         {
-          label: "Cours",
+          label: "Cours (USD)",
           data: [
+            { x: mmiDateArray[65], y: mmiPriceArray[65] },
+            { x: mmiDateArray[64], y: mmiPriceArray[64] },
+            { x: mmiDateArray[63], y: mmiPriceArray[63] },
             { x: mmiDateArray[62], y: mmiPriceArray[62] },
             { x: mmiDateArray[61], y: mmiPriceArray[61] },
             { x: mmiDateArray[60], y: mmiPriceArray[60] },
@@ -185,6 +188,26 @@ async function mmiChart2() {
           {
             label: "Volatilité (%)",
             data: [
+              { x: mmiDateArray[40], y: mmiVolatilityArray[40] * 100 },
+              { x: mmiDateArray[39], y: mmiVolatilityArray[39] * 100 },
+              { x: mmiDateArray[38], y: mmiVolatilityArray[38] * 100 },
+              { x: mmiDateArray[37], y: mmiVolatilityArray[37] * 100 },
+              { x: mmiDateArray[36], y: mmiVolatilityArray[36] * 100 },
+              { x: mmiDateArray[35], y: mmiVolatilityArray[35] * 100 },
+              { x: mmiDateArray[34], y: mmiVolatilityArray[34] * 100 },
+              { x: mmiDateArray[33], y: mmiVolatilityArray[33] * 100 },
+              { x: mmiDateArray[32], y: mmiVolatilityArray[32] * 100 },
+              { x: mmiDateArray[31], y: mmiVolatilityArray[31] * 100 },
+              { x: mmiDateArray[30], y: mmiVolatilityArray[30] * 100 },
+              { x: mmiDateArray[29], y: mmiVolatilityArray[29] * 100 },
+              { x: mmiDateArray[28], y: mmiVolatilityArray[28] * 100 },
+              { x: mmiDateArray[27], y: mmiVolatilityArray[27] * 100 },
+              { x: mmiDateArray[26], y: mmiVolatilityArray[26] * 100 },
+              { x: mmiDateArray[25], y: mmiVolatilityArray[25] * 100 },
+              { x: mmiDateArray[24], y: mmiVolatilityArray[24] * 100 },
+              { x: mmiDateArray[23], y: mmiVolatilityArray[23] * 100 },
+              { x: mmiDateArray[22], y: mmiVolatilityArray[22] * 100 },
+              { x: mmiDateArray[21], y: mmiVolatilityArray[21] * 100 },
               { x: mmiDateArray[20], y: mmiVolatilityArray[20] * 100 },
               { x: mmiDateArray[19], y: mmiVolatilityArray[19] * 100 },
               { x: mmiDateArray[18], y: mmiVolatilityArray[18] * 100 },
@@ -412,6 +435,7 @@ async function mmiChart2() {
 
       // update MMI graph
       ((myChart2.data.datasets[0].data = [
+        { x: mmiDateArray[21], y: mmiPriceArray[21] },
         { x: mmiDateArray[20], y: mmiPriceArray[20] },
         { x: mmiDateArray[19], y: mmiPriceArray[19] },
         { x: mmiDateArray[18], y: mmiPriceArray[18] },
@@ -443,6 +467,7 @@ async function mmiChart2() {
 
       // update volatility graph
       (myChartVolatility.data.datasets[0].data = [
+        { x: mmiDateArray[21], y: mmiVolatilityArray[21] * 100 },
         { x: mmiDateArray[20], y: mmiVolatilityArray[20] * 100 },
         { x: mmiDateArray[19], y: mmiVolatilityArray[19] * 100 },
         { x: mmiDateArray[18], y: mmiVolatilityArray[18] * 100 },
@@ -509,6 +534,9 @@ async function mmiChart2() {
       mmiScalesYMin = Math.round(minValue / 10) * 10 - 10; // convert number to the nearest multiple of 10 and subtract a number for more space
 
       ((myChart2.data.datasets[0].data = [
+        { x: mmiDateArray[65], y: mmiPriceArray[65] },
+        { x: mmiDateArray[64], y: mmiPriceArray[64] },
+        { x: mmiDateArray[63], y: mmiPriceArray[63] },
         { x: mmiDateArray[62], y: mmiPriceArray[62] },
         { x: mmiDateArray[61], y: mmiPriceArray[61] },
         { x: mmiDateArray[60], y: mmiPriceArray[60] },
@@ -574,6 +602,9 @@ async function mmiChart2() {
         { x: mmiDateArray[0], y: mmiPriceArray[0] },
       ]),
       (myChart2.data.datasets[1].data = [
+        { x: mmiDateArray[65], y: movingAverage20Array[65] },
+        { x: mmiDateArray[64], y: movingAverage20Array[64] },
+        { x: mmiDateArray[63], y: movingAverage20Array[63] },
         { x: mmiDateArray[62], y: movingAverage20Array[62] },
         { x: mmiDateArray[61], y: movingAverage20Array[61] },
         { x: mmiDateArray[60], y: movingAverage20Array[60] },
@@ -644,6 +675,7 @@ async function mmiChart2() {
 
       // update volatility chart
       (myChartVolatility.data.datasets[0].data = [
+        { x: mmiDateArray[21], y: mmiVolatilityArray[21] * 100 },
         { x: mmiDateArray[20], y: mmiVolatilityArray[20] * 100 },
         { x: mmiDateArray[19], y: mmiVolatilityArray[19] * 100 },
         { x: mmiDateArray[18], y: mmiVolatilityArray[18] * 100 },
@@ -681,6 +713,9 @@ async function mmiChart2() {
       mmiScalesYMin = Math.round(minValue / 10) * 10 - 10; // convert number to the nearest multiple of 10 and subtract a number for more space
 
       (myChart2.data.datasets[0].data = [
+        { x: mmiDateArray[65], y: mmiPriceArray[65] },
+        { x: mmiDateArray[64], y: mmiPriceArray[64] },
+        { x: mmiDateArray[63], y: mmiPriceArray[63] },
         { x: mmiDateArray[62], y: mmiPriceArray[62] },
         { x: mmiDateArray[61], y: mmiPriceArray[61] },
         { x: mmiDateArray[60], y: mmiPriceArray[60] },
@@ -746,6 +781,9 @@ async function mmiChart2() {
         { x: mmiDateArray[0], y: mmiPriceArray[0] },
       ]),
         (myChart2.data.datasets[2].data = [
+          { x: mmiDateArray[65], y: movingAverage30Array[65] },
+          { x: mmiDateArray[64], y: movingAverage30Array[64] },
+          { x: mmiDateArray[63], y: movingAverage30Array[63] },
           { x: mmiDateArray[62], y: movingAverage30Array[62] },
           { x: mmiDateArray[61], y: movingAverage30Array[61] },
           { x: mmiDateArray[60], y: movingAverage30Array[60] },
@@ -816,6 +854,7 @@ async function mmiChart2() {
 
       // update volatility chart
       (myChartVolatility.data.datasets[0].data = [
+        { x: mmiDateArray[21], y: mmiVolatilityArray[21] * 100 },
         { x: mmiDateArray[20], y: mmiVolatilityArray[20] * 100 },
         { x: mmiDateArray[19], y: mmiVolatilityArray[19] * 100 },
         { x: mmiDateArray[18], y: mmiVolatilityArray[18] * 100 },
@@ -852,6 +891,9 @@ async function mmiChart2() {
       minValue = Math.round(Math.min(...mmiDataDynArray));
       mmiScalesYMin = Math.round(minValue / 10) * 10 - 10; // convert number to the nearest multiple of 10 and subtract a number for more space
       (myChart2.data.datasets[0].data = [
+        { x: mmiDateArray[65], y: mmiPriceArray[65] },
+        { x: mmiDateArray[64], y: mmiPriceArray[64] },
+        { x: mmiDateArray[63], y: mmiPriceArray[63] },
         { x: mmiDateArray[62], y: mmiPriceArray[62] },
         { x: mmiDateArray[61], y: mmiPriceArray[61] },
         { x: mmiDateArray[60], y: mmiPriceArray[60] },
@@ -917,6 +959,9 @@ async function mmiChart2() {
         { x: mmiDateArray[0], y: mmiPriceArray[0] },
       ]),
         (myChart2.data.datasets[3].data = [
+          { x: mmiDateArray[65], y: movingAverage50Array[65] },
+          { x: mmiDateArray[64], y: movingAverage50Array[64] },
+          { x: mmiDateArray[63], y: movingAverage50Array[63] },
           { x: mmiDateArray[62], y: movingAverage50Array[62] },
           { x: mmiDateArray[61], y: movingAverage50Array[61] },
           { x: mmiDateArray[60], y: movingAverage50Array[60] },
@@ -987,6 +1032,7 @@ async function mmiChart2() {
 
       // update volatility chart
       (myChartVolatility.data.datasets[0].data = [
+        { x: mmiDateArray[21], y: mmiVolatilityArray[21] * 100 },
         { x: mmiDateArray[20], y: mmiVolatilityArray[20] * 100 },
         { x: mmiDateArray[19], y: mmiVolatilityArray[19] * 100 },
         { x: mmiDateArray[18], y: mmiVolatilityArray[18] * 100 },

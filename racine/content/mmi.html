@@ -35,7 +35,7 @@
       type="text/javascript"
     ></script>
     <script
-      src="../scripts/javascript/sidechainAnim.js"
+      src="../scripts/javascript/sidechainHeader.js"
       defer
       type="text/javascript"
     ></script>
@@ -60,6 +60,11 @@
     <header>
       <nav class="header">
         <ul>
+          <li>
+            <div class="logoDIV">
+              <img src="../img/sidechain logo.png" class="logoIMG" />
+            </div>
+          </li>
           <li class="titlewebsite" id="cursor"></li>
           <li class="MMIHeader">
             <a
@@ -89,6 +94,11 @@
     </header>
     <nav id="navbar">
       <ul>
+        <li>
+          <div class="logoDIV">
+            <img src="../img/sidechain logo.png" class="logoIMG" />
+          </div>
+        </li>
         <li class="titlewebsite2"><a href="../home.html">Sidechain</a></li>
         <li class="share" id="MMInavbarTitle">
           <span id="letterMMIHeader">M</span>usic
@@ -157,7 +167,7 @@
             </tr>
             <tr>
               <td>Intervalle</td>
-              <td>5j/7 (mardi à samedi) - 00h00 (UTC+0)</td>
+              <td>5j/7 (mardi à samedi) - 00:00 (UTC+0)</td>
             </tr>
           </tbody>
         </table>
@@ -260,12 +270,14 @@
               1 mois
             </button>
           </div>
-          <div>
-            <select name="var" id="varSelect">
-              <option value="var1" id="varH">VaR-H (95%,10 jours)</option>
-              <option value="var2">VaR-Pa (5%) 1 mois</option>
+          <div class="varOptions">
+            <select name="var" class="var" id="varSelect">
+              <option value="var1">VaR-Pa (5%) 1 mois</option>
+              <option value="var2" id="varH">VaR-H (95%,10 jours)</option>
             </select>
-            <span id="varResult"></span>
+            <button role="button" class="buttonMMIGraph" id="buttonVAR">
+              <span id="varResult"></span>
+            </button>
           </div>
           <div class="RightButtons">
             <button role="button" class="buttonMMIGraph" id="mmiMA20">
@@ -288,12 +300,15 @@
         <div class="volatilityChart">
           <canvas
             id="mmiChartVolatility"
-            width="800"
+            width="750"
             height="300"
             role="img"
           ></canvas>
           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         </div>
+      </div>
+      <div class="logoDIVtransition">
+        <img src="../img/sidechain black logo.png" class="logoIMG" />
       </div>
       <h1 class="compositionTitle">
         <span class="compositionLetter">Compo</span>sition
@@ -307,7 +322,8 @@
       </p>
       <h3 class="primaryValues">Valeurs Primaires</h3>
       <p>
-        Avec<span class="UMGbold"
+        Avec
+        <span class="UMGbold"
           ><strong class="UMGbold">Universal Music Group</strong> (UMG)</span
         >
         en chef d'orchestre, les valeurs primaires sont composées des plus
@@ -324,7 +340,7 @@
         au samedi).
       </p>
       <h3 class="primaryValues">Valeurs Secondaires</h3>
-      <p>
+      <p style="margin-bottom: 20px">
         Principalement grâce a leur plateforme de streaming, ces géants
         internationaux de la "tech", composant ainsi les valeurs secondaires du
         MMI, investissent massivement dans les services musicaux pour profiter

@@ -25,6 +25,9 @@ async function mmiChart() {
         {
           label: "Cours",
           data: [
+            { x: mmiDateArray[65], y: mmiPriceArray[65] },
+            { x: mmiDateArray[64], y: mmiPriceArray[64] },
+            { x: mmiDateArray[63], y: mmiPriceArray[63] },
             { x: mmiDateArray[62], y: mmiPriceArray[62] },
             { x: mmiDateArray[61], y: mmiPriceArray[61] },
             { x: mmiDateArray[60], y: mmiPriceArray[60] },
@@ -242,7 +245,7 @@ async function mmiChart() {
 
   // 1 month graph
   button1month.addEventListener("click", () => {
-    mmiDataDynArray = mmiPriceArray.slice(0, 21); // get an array with 1 month data to get the max and the min using to display min and max for the Y Axe of the graph
+    mmiDataDynArray = mmiPriceArray.slice(0, 22); // get an array with 1 month data to get the max and the min using to display min and max for the Y Axe of the graph
     maxValue = Math.round(Math.max(...mmiDataDynArray));
     mmiScalesYMax = Math.round(maxValue / 10) * 10 + 20; // convert number to the nearest multiple of 10 and add a number for more space
 
@@ -250,6 +253,7 @@ async function mmiChart() {
     mmiScalesYMin = Math.round(minValue / 10) * 10 - 30; // convert number to the nearest multiple of 10 and subtract a number for more space
 
     ((myChart.data.datasets[0].data = [
+      { x: mmiDateArray[21], y: mmiPriceArray[21] },
       { x: mmiDateArray[20], y: mmiPriceArray[20] },
       { x: mmiDateArray[19], y: mmiPriceArray[19] },
       { x: mmiDateArray[18], y: mmiPriceArray[18] },

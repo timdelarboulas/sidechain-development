@@ -274,15 +274,14 @@ const csvVARfetch = async () => {
     varData.splice(0, 4); // delete header index
 
     // display VaR
-    varDisplay.textContent =
-      parseFloat(varData[0]) + "%, " + parseFloat(varData[1]) + "$.";
+    varDisplay.textContent = "en production";
 
     varSelection.addEventListener("change", (e) => {
       if (e.target.value == "var1") {
+        varDisplay.textContent = "en production";
+      } else if (e.target.value == "var2") {
         varDisplay.textContent =
           parseFloat(varData[0]) + "%, " + parseFloat(varData[1]) + "$.";
-      } else if (e.target.value == "var2") {
-        varDisplay.textContent = "en production";
       }
     });
   } catch {

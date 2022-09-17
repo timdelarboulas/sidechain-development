@@ -3,7 +3,7 @@
 
 const target = document.querySelector(".titlewebsite");
 
-let array = ["Sidechain", "Musique", "Finance"];
+let array = ["Sidechain", "Music", "Market"];
 let wordIndex = 0;
 let letterIndex = 0;
 
