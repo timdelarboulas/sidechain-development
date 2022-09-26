@@ -261,9 +261,8 @@ const csvMAfetch = async () => {
 
 // display of VaR value according to the type of VaR chosen
 const csvVaR = "http://127.0.0.1:5500/development/back/mmi/mmi_var.csv";
-const varSelection = document.getElementById("varSelect");
-const varHistorical = document.getElementById("varH");
-const varDisplay = document.getElementById("varResult");
+const varH1day = document.getElementById("varHOneDay");
+const varH10days = document.getElementById("varH10days");
 
 const csvVARfetch = async () => {
   try {
@@ -274,18 +273,11 @@ const csvVARfetch = async () => {
     varData.splice(0, 4); // delete header index
 
     // display VaR
-    varDisplay.textContent = "en production";
-
-    varSelection.addEventListener("change", (e) => {
-      if (e.target.value == "var1") {
-        varDisplay.textContent = "en production";
-      } else if (e.target.value == "var2") {
-        varDisplay.textContent =
-          parseFloat(varData[0]) + "%, " + parseFloat(varData[1]) + "$.";
-      }
-    });
+    varH1day.textContent = parseFloat(varData[0]) + "%";
+    varH10days.textContent = parseFloat(varData[1]) + " USD";
   } catch {
-    varDisplay.textContent = "N/A";
+    varH1day.textContent = "error";
+    varDisplay.textContent = "error";
   }
 };
 

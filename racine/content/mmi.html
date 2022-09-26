@@ -62,7 +62,7 @@
         <ul>
           <li>
             <div class="logoDIV">
-              <img src="../img/sidechain logo.png" class="logoIMG" />
+              <img src="../img/sidechain_logo_white.png" class="logoIMG" />
             </div>
           </li>
           <li class="titlewebsite" id="cursor"></li>
@@ -96,7 +96,7 @@
       <ul>
         <li>
           <div class="logoDIV">
-            <img src="../img/sidechain logo.png" class="logoIMG" />
+            <img src="../img/sidechain_logo_white.png" class="logoIMG" />
           </div>
         </li>
         <li class="titlewebsite2"><a href="../home.html">Sidechain</a></li>
@@ -119,7 +119,8 @@
             ><span id="letterMMI">M</span>usic
             <span id="letterMMI">M</span>arket
             <span id="letterMMI">I</span>ndex<span id="copyright"></span
-          ></strong>
+            ><span id="copyright">&#xA9;</span></strong
+          >
         </h1>
       </div>
       <div class="mmiText" id="mmiTextAbout">
@@ -270,15 +271,6 @@
               1 mois
             </button>
           </div>
-          <div class="varOptions">
-            <select name="var" class="var" id="varSelect">
-              <option value="var1">VaR-Pa (5%) 1 mois</option>
-              <option value="var2" id="varH">VaR-H (95%,10 jours)</option>
-            </select>
-            <button role="button" class="buttonMMIGraph" id="buttonVAR">
-              <span id="varResult"></span>
-            </button>
-          </div>
           <div class="RightButtons">
             <button role="button" class="buttonMMIGraph" id="mmiMA20">
               MM 20
@@ -307,8 +299,60 @@
           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         </div>
       </div>
+      <div class="AboutMMITables">
+        <table class="detailsMMI">
+          <thead>
+            <tr>
+              <th colspan="2">Value at Risk (95%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>VaR-Pa (1 jour)</td>
+              <td>en prod.</td>
+            </tr>
+            <tr>
+              <td>VaR-H (1 jour)</td>
+              <td id="varHOneDay"></td>
+            </tr>
+            <tr>
+              <td>VaR-Pa (10 jours)</td>
+              <td>en prod.</td>
+            </tr>
+            <tr>
+              <td>VaR-H (10 jours)</td>
+              <td id="varH10days"></td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="detailsMMI">
+          <thead>
+            <tr>
+              <th colspan="2">Backtesting</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="logoDIVtransition">
-        <img src="../img/sidechain black logo.png" class="logoIMG" />
+        <img src="../img/sidechain_logo_black.png" class="logoIMG" />
       </div>
       <h1 class="compositionTitle">
         <span class="compositionLetter">Compo</span>sition

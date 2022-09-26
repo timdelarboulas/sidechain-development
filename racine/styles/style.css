@@ -119,8 +119,8 @@ ul {
   list-style-type: none;
   padding-top: 15px;
   margin-top: 0px;
-  margin-left: 8rem;
-  margin-right: 8rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
   font-size: 2rem;
 
   display: flex;
@@ -315,7 +315,7 @@ q {
   display: flex;
   justify-content: space-between; 
   align-items: stretch;
-  gap: 100px;
+  gap: 60px;
 }
 
 table.detailsMMI {
@@ -648,6 +648,15 @@ td {
 
 .buttonMMIGraph:disabled {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+#buttonLink{
+  color: #000000;
+}
+
+#buttonLink:hover {
+  background: #F6F9FE;
+  color: #FF8300;
 }
 
 .LeftButtons {
