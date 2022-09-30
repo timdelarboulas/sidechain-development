@@ -23,7 +23,7 @@ if r.ok:
     js = json.loads(soup.text)
     quotes = js.get("quotes")
     eurusd_change_rate = quotes.get("EURUSD")
-    print(eurusd_change_rate)
+    print(f"EUR/USD = {eurusd_change_rate}")
     # latest change rate
 
 
@@ -37,7 +37,7 @@ if r.ok:
     js = json.loads(soup.text)
     quotes = js.get("quotes")
     inrusd_change_rate = quotes.get("INRUSD")
-    print(inrusd_change_rate)
+    print(f"INR/USD = {inrusd_change_rate}")
     # latest change rate
 
 
@@ -55,7 +55,7 @@ if r.ok:
         for d in js:
             if key in d:
                 btc_price = d[key]
-        print(btc_price)
+        print(f"BTC/USD = {btc_price}")
     except Exception:
         pass
     # success => lastest BTC/USD price from COINBASE
