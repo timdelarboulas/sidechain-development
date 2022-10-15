@@ -11,7 +11,6 @@ from pandas_datareader import data as pdr
 import yfinance
 import numpy as np
 import datetime as dt
-import datetime as dt
 from scipy.stats import norm
 
 # files

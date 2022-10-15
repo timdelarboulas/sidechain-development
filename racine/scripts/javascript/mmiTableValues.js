@@ -8,11 +8,11 @@ const csvSecondaryValue =
 const primaryValuesInfo = document.querySelector(".primaryValuesInfo");
 const secondaryValuesInfo = document.querySelector(".secondaryValuesInfo");
 
+let result = [];
+
 const openCSVPrimaryValues = async () => {
   const pvDatas = await fetch(csvPrimaryValue);
   try {
-    let result = [];
-
     // transform csv into JSON object
     const pvText = await pvDatas.text();
     const lines = pvText.split("\n");
@@ -63,8 +63,6 @@ const openCSVPrimaryValues = async () => {
     console.error("error");
   }
 };
-
-openCSVPrimaryValues();
 
 const openCSVSecondaryValues = async () => {
   const pvSecondaryDatas = await fetch(csvSecondaryValue);
@@ -132,4 +130,7 @@ const openCSVSecondaryValues = async () => {
   }
 };
 
-openCSVSecondaryValues();
+async function openMMITables() {
+  await openCSVPrimaryValues();
+  await openCSVSecondaryValues();
+}

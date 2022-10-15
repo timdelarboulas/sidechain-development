@@ -55,6 +55,11 @@
       defer
       type="text/javascript"
     ></script>
+    <script
+      src="../scripts/javascript/mmiChartComposition.js"
+      defer
+      type="text/javascript"
+    ></script>
   </head>
   <body>
     <header>
@@ -85,7 +90,11 @@
             >
           </li>
           <li class="share" id="news">
-            <a href="" target="_blank" rel="noopener noreferrer" id="newsLink"
+            <a
+              href="https://timdelarboulas.wixsite.com/output/blog"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="newsLink"
               >News</a
             >
           </li>
@@ -395,10 +404,14 @@
       <p class="exposantTable">
         &#178; Les coefficients de pondération sont déterminés à partir des
         rapports financier annuels des entreprises et des informations diffusées
-        dans la presse spécialisée. Grâce à son service Apple Music, le géant
+        dans la presse spécialisée. Grâce à son service Apple, le géant
         californien a 8,70% de son activité impliqué sur le marché mondial de la
         musique en 2021.
       </p>
+      <div class="compositionChart" style="width: 600px">
+        <canvas id="mmiComposition" role="img"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      </div>
     </div>
   </body>
 </html>
